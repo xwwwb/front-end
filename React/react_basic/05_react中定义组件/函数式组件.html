@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello react</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<!--这里一定是Babel-->
+<script type="text/babel">
+  // 1.创建函数式组件
+  function Demo(){
+    console.log(this) //这里的this是undefined 因为babel编译后开启严格模式 this指向undefined
+    return <h2>这是用函数定义的组件,适用于简单组件的定义</h2>
+  }
+  ReactDOM.render(<Demo/>,document.getElementById('root'))
+  /*
+  执行了ReactDOM.render()...之后 发生了什么
+    1.React解析组件标签 找到Demo组件
+    2.发现组件是用函数定义的 调用该函数 将返回的虚拟DOM转为真实DOM 随后呈现在页面中
+   */
+</script>
+</body>
+</html>

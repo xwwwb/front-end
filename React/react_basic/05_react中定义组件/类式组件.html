@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+	class Demo extends React.Component{
+		render(){
+		    //render是放在哪里 Demo的原型对象上 共实例使用
+				console.log(this)
+		    return <h2>这是用类定义的组件 适用于复杂组件的定义</h2>
+		}
+	}
+	ReactDOM.render(<Demo/>,document.getElementById('root'))
+	/*
+  执行了ReactDOM.render()...之后 发生了什么
+     1.React解析组件标签 找到Demo组件
+     2.React发现组件是使用类定义的 随后new出来该类的实力 并通过该实例调用到原型的render方法
+     3.将render返回的虚拟DOM转为真实DOM随后呈现在页面中
+	 */
+</script>
+</body>
+</html>

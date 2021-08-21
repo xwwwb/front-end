@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello react</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<!--这里一定是Babel-->
+<script type="text/babel">
+  // 创建虚拟DOM
+  const App=(
+          <h1 id="title">
+            <span>Hello React</span>
+          </h1>
+  )
+  // 渲染虚拟DOM到页面
+  ReactDOM.render(App,document.getElementById('root'))
+  console.log(App)
+  const dom = document.getElementById('root')
+  console.log(dom) //真实DOM
+  console.log(typeof App)
+  console.log(App instanceof Object)
+  // 关于虚拟DOM
+  // 本质是Object类型的对象
+  // 虚拟DOM比较轻 真实DOM比较重 因为虚拟DOM是React内部再用 无需真实DOM上那么多的属性
+  // 虚拟DOM最终会被React转化为真实DOM 呈现在页面上
+debugger
+</script>
+</body>
+</html>

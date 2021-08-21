@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		class Demo extends React.Component {
+			constructor(props) {
+				super(props);
+				//初始化对象
+				this.state = { isHot: true }
+				//拿着原型上面的 生成一个新的 挂在实例自身
+				this.changeWeather = this.changeWeather.bind(this)
+			}
+
+			render() {
+				console.log(this)
+				const { isHot } = this.state
+				return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '寒冷'}</h2>
+			}
+			changeWeather() {
+				//changeWeather放在哪里？ ———— Weather的原型对象上，供实例使用
+				//由于changeWeather是作为onClick的回调，所以不是通过实例调用的，是直接调用
+				//类中的方法默认开启了局部的严格模式，所以changeWeather中的this为undefined
+				const isHot = this.state.isHot
+				//严重注意 状态 state 不可直接更改 要借助内置API更改
+				this.setState({ isHot: !isHot })
+			}
+		}
+		ReactDOM.render(<Demo />, document.getElementById('root'))
+	</script>
+</body>
+
+</html>

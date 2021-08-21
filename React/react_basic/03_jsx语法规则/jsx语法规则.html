@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello react</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+  <style>
+    .title{
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<!--这里一定是Babel-->
+<script type="text/babel">
+  // 创建虚拟DOM
+  const myID='title'
+  // style的双括号外层代表要写js 内层代表js对象
+  const App=(
+        <h2 className="title" id={myID}>
+          <span style={{color:'white'}}>Hello React</span>
+        </h2>
+  )
+  // 渲染虚拟DOM到页面
+  ReactDOM.render(App,document.getElementById('root'))
+/*
+ jsx语法规则
+ 1.定义虚拟DOM时 不要写引号
+ 2.标签中混入js表达式时 要用{}
+ 3.样式的类名指定不要用class 用className
+ 4.内联样式 要用style={{key:value}}的形式去写
+ 5.虚拟DOM必须只有一个跟标签
+ 6.标签必须闭合
+ 7. 标签首字母
+    若小写字母开头 则将标签改为HTML同名元素 若HTML中无该标签 则报错
+    若大写字母开头 则将其渲染为组件 若组件未定义 报错
+ */
+</script>
+</body>
+</html>
