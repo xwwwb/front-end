@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="root"></div>
+	<script type="text/babel">
+		class Demo extends React.Component {
+			constructor(props) {
+				super(props);
+			}
+			// 类中使用赋值语句 能直接添加到实例对象上
+			// 初始化状态
+			state = { isHot: true }
+
+			render() {
+				const { isHot } = this.state
+				return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '寒冷'}</h2>
+			}
+			// 这里也是赋值语句 使用箭头函数可以使this 向外侧寻找 这里的this最终是指向实例对象的
+			changeWeather=()=> {
+				const isHot = this.state.isHot
+				console.log(this)
+				this.setState({ isHot: !isHot })
+			}
+		}
+		ReactDOM.render(<Demo />, document.getElementById('root'))
+	</script>
+</body>
+
+</html>
