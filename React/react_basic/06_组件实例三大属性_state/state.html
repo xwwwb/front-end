@@ -13,6 +13,7 @@
 	<div id="root"></div>
 	<script type="text/babel">
 		class Demo extends React.Component {
+			//构造器调用几次 有几个组件调用几次
 			constructor(props) {
 				super(props);
 				//初始化对象
@@ -22,16 +23,19 @@
 			}
 
 			render() {
+				//render调用几次 1+n次 1是初始化那次 n是状态更新的次数
 				console.log(this)
 				const { isHot } = this.state
 				return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '寒冷'}</h2>
 			}
+			//changeWeather调用几次 点几次调用几次
 			changeWeather() {
-				//changeWeather放在哪里？ ———— Weather的原型对象上，供实例使用
+				//changeWeather放在哪里 ———— Weather的原型对象上，供实例使用
 				//由于changeWeather是作为onClick的回调，所以不是通过实例调用的，是直接调用
 				//类中的方法默认开启了局部的严格模式，所以changeWeather中的this为undefined
 				const isHot = this.state.isHot
 				//严重注意 状态 state 不可直接更改 要借助内置API更改
+				//状态必须使用setState进行更新 且更新是合并 不是替换
 				this.setState({ isHot: !isHot })
 			}
 		}
