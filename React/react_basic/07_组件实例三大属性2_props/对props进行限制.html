@@ -19,6 +19,7 @@
 		class Person extends React.Component{
       render(){
         // console.log(this)
+		    // this.props.name='jack' //props只读
         return(
           <ul>
             <li>姓名:{this.props.name}</li>
@@ -29,14 +30,24 @@
       }
     }
     Person.propTypes={
-      name:PropTypes.string.isRequired,
+      name:PropTypes.string.isRequired, //限制name必传 且为字符串
+      age:PropTypes.number, //限制age为数字
+		  speek:PropTypes.func //这里是func 写function和关键字重名
+		}
+    Person.defaultProps={
+		    name:"小王"
     }
-    ReactDOM.render(<Person name="" age={19} sex="女"/>,document.getElementById('root'))
+    ReactDOM.render(<Person age={19} sex="女" speek={speek}/>,document.getElementById('root'))
     ReactDOM.render(<Person name="jerry" age={18} sex="男"/>,document.getElementById('app'))
     const p = {name:'xwwwb',age:16,sex:'男'}
     // 原生js中...不能复制对象 这里的花括号是代表其中要填js表达式 由Babel和React帮你完成复制(仅仅适用于标签属性传递) 原生js中{...p}可以复制对象是ES官方语法 这里的花括号用处不同
     // console.log(...p) 这种写法是错误的
     ReactDOM.render(<Person {...p}/>,document.getElementById('react'))
+		function speek(){
+        console.log("说话了")
+		}
+
+
 	</script>
 </body>
 
