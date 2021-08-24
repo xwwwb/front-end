@@ -17,6 +17,12 @@
 <div id="react"></div>
 <script type="text/babel">
     class Person extends React.Component{
+        constructor(props){
+            // 构造器可写可不写 具体参考 https://zh-hans.reactjs.org/docs/react-component.html#constructor
+            // 构造器是否接收props 是否传递给super 取决于 是否希望在构造器中通过this访问props
+            super(props)
+            console.log('constructor',this.props)
+        }
         //static能把属性添加到类中 而赋值语句只能加到实例对象上
         static propTypes={
             name:PropTypes.string.isRequired, //限制name必传 且为字符串
