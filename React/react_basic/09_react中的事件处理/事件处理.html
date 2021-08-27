@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
+	<script src="../js/prop-types.js"></script>
+</head>
+
+<body>
+<div id="root"></div>
+<script type="text/babel">
+class Dome extends React.Component{
+
+  /*
+  通过onXxx属性指定事件处理函数 注意大小
+    React使用的是自定义（合成）事件 而不是使用的原生DOM事件
+    React中的事件是通过事件委托方式处理的（委托给组件最外层的元素）
+  通过event.target得到发生事件的的DOM元素对象
+  */
+  //不推荐大量使用Ref 
+  //https://zh-hans.reactjs.org/docs/refs-and-the-dom.html#dont-overuse-refs
+  //当发生事件的元素正好是要操作的元素 就能省略ref
+  showData=(event)=>{
+    const {value} = event.target
+    alert(value)
+  }
+
+  render(){
+    return (
+      <div>
+        <input type="text" onBlur={this.showData} placeholder="失去焦点提示数据"/>&nbsp;
+        </div>
+    )
+  }
+}
+ReactDOM.render(<Dome/>,document.getElementById('root'))
+</script>
+</body>
+
+</html>
