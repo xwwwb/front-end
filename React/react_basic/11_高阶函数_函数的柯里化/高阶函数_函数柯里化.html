@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
+	<!-- <script src="../js/prop-types.js"></script> -->
+</head>
+
+<body>
+<div id="root"></div>
+<script type="text/babel">
+//#region
+	/*
+		高阶函数 如果一个函数符合下面2个规范中的任何一个 那该函数就是高阶函数
+			若A函数 接收的参数是一个函数 那么A就可以称之为高阶函数
+			若A函数 调用的返回值依然是一个函数 那么A就可以称之为高阶函数
+	*/
+//#endregion
+		//创建组件
+class Login extends React.Component{
+	handleSubmit=(event)=>{
+	 event.preventDefault()
+	 const {username,password}=this.state
+	 alert(`用户名是${username},密码是${password}`)
+	}
+	state={
+		username:'',
+		password:''
+	}
+	//第35集内容
+	saveFormData=(dataType)=>{
+		return(event)=>{
+			this.setState({[dataType]:event.target.value})
+		}
+	}
+	render(){
+		return(
+			<form action="" onSubmit={this.handleSubmit}>
+				用户名：<input onChange={this.saveFormData('username')} type="text" name="username"/>
+				密码：<input onChange={this.saveFormData('password')} type="password" name="password"/>
+				<button>登录</button>
+				</form>
+		)
+	}
+}
+ReactDOM.render(<Login/>,document.getElementById('root'))
+</script>
+</body>
+
+</html>

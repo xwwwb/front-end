@@ -26,7 +26,7 @@ class Login extends React.Component{
       <form action="" onSubmit={this.handleSubmit}>
         用户名：<input ref={c=>this.username=c}type="text" name="username"/>
         密码：<input ref={c=>this.password=c}type="password" name="password"/>
-        <button>登录</button>
+        <button>登录</button>  {/*button的默认方式是submit  https://blog.csdn.net/cauchy6317/article/details/81093772 */}
         </form>
     )
   }
