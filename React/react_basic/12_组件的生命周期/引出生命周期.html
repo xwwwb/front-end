@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
+	<!-- <script src="../js/prop-types.js"></script> -->
+</head>
+
+<body>
+<div id="root"></div>
+<script type="text/babel">
+//创建组件
+class Life extends React.Component{
+  state={opacity:0.5}
+  death=()=>{
+    // clearInterval(this.timer)//这里也行
+    ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+  }
+  componentWillUnmount(){
+    clearInterval(this.timer)
+  }
+  componentDidMount(){
+        console.log('render')
+      this.timer=setInterval(() => {
+      let {opacity}=this.state
+      opacity -=0.05
+      // this.setState({opacity:opacity}) //下行为缩写
+      if(opacity<=0) opacity=1 //不用等于0是因为精度问题 不一定减到0
+      this.setState({opacity}) //这行会再次render然后会再开一个定时器
+    }, 100);
+  }
+  //以下代码发生了无限迭代的问题
+  render(){
+    // console.log('render')
+    // setInterval(() => {
+    //   let {opacity}=this.state
+    //   opacity -=0.1
+    //   // this.setState({opacity:opacity}) //下行为缩写
+    //   if(opacity<=0) opacity=1 //不用等于0是因为精度问题 不一定减到0
+    //   this.setState({opacity}) //这行会再次render然后会再开一个定时器
+    // }, 200);
+    return (
+      <div>
+        <h2 style={{opacity:this.state.opacity}}>React学不会怎么办</h2>
+        <button onClick={this.death}>不活了</button>
+        </div>
+    )
+  }
+}
+ReactDOM.render(<Life/>,document.getElementById('root'))
+</script>
+</body>
+
+</html>

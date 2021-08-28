@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../js/react.development.js"></script>
+	<script src="../js/react-dom.development.js"></script>
+	<script src="../js/babel.min.js"></script>
+	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
+	<!-- <script src="../js/prop-types.js"></script> -->
+</head>
+
+<body>
+<div id="root"></div>
+<script type="text/babel">
+//创建组件
+class Login extends React.Component{
+	handleSubmit=(event)=>{
+	 event.preventDefault()
+	 const {username,password}=this.state
+	 alert(`用户名是${username},密码是${password}`)
+	}
+	state={
+		username:'',
+		password:''
+	}
+
+	saveFormData=(dataType,value)=>{
+
+			this.setState({[dataType]:value})
+		
+	}
+	render(){
+		return(
+			<form action="" onSubmit={this.handleSubmit}>
+				用户名：<input onChange={event=>this.saveFormData('username',event.target.value)} type="text" name="username"/>
+				密码：<input onChange={event=>this.saveFormData('password',event.target.value)} type="password" name="password"/>
+				<button>登录</button>
+				</form>
+		)
+	}
+}
+ReactDOM.render(<Login/>,document.getElementById('root'))
+</script>
+</body>
+
+</html>
