@@ -19,9 +19,12 @@
 		高阶函数 如果一个函数符合下面2个规范中的任何一个 那该函数就是高阶函数
 			若A函数 接收的参数是一个函数 那么A就可以称之为高阶函数
 			若A函数 调用的返回值依然是一个函数 那么A就可以称之为高阶函数
+			常见个高阶函数有 reduce map Promise setTimeout
+		函数的柯里化 通过函数调用继续返回函数的方式 实现多次接收参数最后统一处理的函数编码形式
 	*/
 //#endregion
-		//创建组件
+
+//创建组件
 class Login extends React.Component{
 	handleSubmit=(event)=>{
 	 event.preventDefault()
