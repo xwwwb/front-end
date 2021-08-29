@@ -13,6 +13,7 @@
 
 <body>
 <div id="root"></div>
+<div id="app"></div>
 <script type="text/babel">
 //创建组件
 
@@ -29,6 +30,10 @@ class Count extends React.Component{
     this.setState({count:count+1})
   }
 
+  force=()=>{
+    this.forceUpdate()
+    //阀门关闭 也可以更新
+  }
   componentWillMount(){
     console.log("componentWillMount")
   }
@@ -39,6 +44,17 @@ class Count extends React.Component{
   componentWillUnmount(){
     console.log("componentWillUnmount")
   }
+  shouldComponentUpdate(){
+    console.log("shouldComponentUpdate")
+    return true
+  }
+  componentWillUpdate(){
+    console.log("componentWillUpdate")
+  }
+  componentDidUpdate(){
+    console.log("componentDidUpdate")
+  }
+  
   render(){
     console.log("render")
     return(
@@ -48,12 +64,69 @@ class Count extends React.Component{
         <button onClick={()=>{
           ReactDOM.unmountComponentAtNode(document.getElementById('root'))
         }}>卸载</button>
+        <button onClick={this.force}>不更改任何状态中的数据 强制更新</button>
         </div>
     )
   }
 }
 
+//A是父组件
+class A extends React.Component{
+  state={carName:"奔驰"}
+  changeCar=()=>{
+    this.setState({carName:"奥拓"})
+  }
+  componentWillReceiveProps(props){
+    console.log("A"+"componentWillReceiveProps",props)
+  }
+  shouldComponentUpdate(){
+    console.log("A"+"shouldComponentUpdate")
+    return true
+  }
+  componentWillUpdate(){
+    console.log("A"+"componentWillUpdate")
+  }
+  componentDidUpdate(){
+    console.log("A"+"componentDidUpdate")
+  }
+  render(){
+    return (
+      <div>
+        这是A组件
+        <button onClick={this.changeCar}>换车</button>
+        <B carName={this.state.carName}/>
+        </div>
+      
+    )
+  }
+}
+//B是子组件
+class B extends React.Component{
+  componentWillReceiveProps(props){
+    console.log("B"+"componentWillReceiveProps",props)
+  }
+  shouldComponentUpdate(){
+    console.log("B"+"shouldComponentUpdate")
+    return true
+  }
+  componentWillUpdate(){
+    console.log("B"+"componentWillUpdate")
+  }
+  componentDidUpdate(){
+    console.log("B"+"componentDidUpdate")
+  }
+  
+
+  render(){
+    return (
+      <div>这是B组件
+        车为 {this.props.carName}
+        </div>
+    )
+  }
+}
 ReactDOM.render(<Count/>,document.getElementById('root'))
+ReactDOM.render(<A/>,document.getElementById('app'))
 </script>
 </body>
 
