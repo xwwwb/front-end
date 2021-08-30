@@ -4,44 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
-	<script src="../js/react.development.js"></script>
-	<script src="../js/react-dom.development.js"></script>
-	<script src="../js/babel.min.js"></script>
+	<script src="../new_js/react.development.js"></script>
+	<script src="../new_js/react-dom.development.js"></script>
+	<script src="../new_js/babel.min.js"></script>
 	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
-	<!-- <script src="../js/prop-types.js"></script> -->
+	<!-- <script src="../new_js/prop-types.js"></script> -->
 </head>
 
 <body>
 <div id="root"></div>
 <div id="app"></div>
 <script type="text/babel">
-	/* 
-			初始化阶段: 由ReactDOM.render()触发---初次渲染
-										constructor()
-										componentWillMount()
-										render()
-										componentDidMount() =====> 常用
-													一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
-			更新阶段: 由组件内部this.setSate()或父组件render触发
-										shouldComponentUpdate()
-										componentWillUpdate()
-										render() =====> 必须使用的一个
-										componentDidUpdate()
-			卸载组件: 由ReactDOM.unmountComponentAtNode()触发
-										componentWillUnmount()  =====> 常用
-													一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息
-		*/
-
-    /*
-    点击换车后控制台输出
-AshouldComponentUpdate
-AcomponentWillUpdate
-BcomponentWillReceiveProps {carName: '奥拓'}
-BshouldComponentUpdate
-BcomponentWillUpdate
-BcomponentDidUpdate
-AcomponentDidUpdate
-    */
 class Count extends React.Component{
   constructor(props){
     console.log("Count-constructor")
@@ -59,7 +32,7 @@ class Count extends React.Component{
     this.forceUpdate()
     //阀门关闭 也可以更新
   }
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
     console.log("componentWillMount")
   }
 
@@ -73,7 +46,7 @@ class Count extends React.Component{
     console.log("shouldComponentUpdate")
     return true
   }
-  componentWillUpdate(){
+  UNSAFE_componentWillUpdate(){
     console.log("componentWillUpdate")
   }
   componentDidUpdate(){
@@ -101,14 +74,14 @@ class A extends React.Component{
   changeCar=()=>{
     this.setState({carName:"奥拓"})
   }
-  componentWillReceiveProps(props){
+  UNSAFE_componentWillReceiveProps(props){
     console.log("A"+"componentWillReceiveProps",props)
   }
   shouldComponentUpdate(){
     console.log("A"+"shouldComponentUpdate")
     return true
   }
-  componentWillUpdate(){
+  UNSAFE_componentWillUpdate(){
     console.log("A"+"componentWillUpdate")
   }
   componentDidUpdate(){
@@ -125,23 +98,12 @@ class A extends React.Component{
     )
   }
 }
+
 //B是子组件
 class B extends React.Component{
-  componentWillReceiveProps(props){
+  UNSAFE_componentWillReceiveProps(props){
     console.log("B"+"componentWillReceiveProps",props)
   }
-  shouldComponentUpdate(){
-    console.log("B"+"shouldComponentUpdate")
-    return true
-  }
-  componentWillUpdate(){
-    console.log("B"+"componentWillUpdate")
-  }
-  componentDidUpdate(){
-    console.log("B"+"componentDidUpdate")
-  }
-  
-
   render(){
     return (
       <div>这是B组件
