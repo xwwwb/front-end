@@ -32,10 +32,16 @@ class Count extends React.Component{
     this.forceUpdate()
     //阀门关闭 也可以更新
   }
-  UNSAFE_componentWillMount(){
-    console.log("componentWillMount")
+  //若state的值在任何时候都取决于props 那么可以使用getDerivedStateFromProps
+  // static getDerivedStateFromProps(props,state){
+  //   console.log("getDerivedStateFromProps",props,state)
+  //   return {count:108}
+  // }
+  //https://zh-hans.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate
+  getSnapshotBeforeUpdate(){
+    console.log("getSnapshotBeforeUpdate")
+    return "xwwwb"
   }
-
   componentDidMount(){
     console.log("componentDidMount")
   }
@@ -46,11 +52,9 @@ class Count extends React.Component{
     console.log("shouldComponentUpdate")
     return true
   }
-  UNSAFE_componentWillUpdate(){
-    console.log("componentWillUpdate")
-  }
-  componentDidUpdate(){
-    console.log("componentDidUpdate")
+
+  componentDidUpdate(preProps,preState,snapShopValue){
+    console.log("componentDidUpdate",preProps,preState,snapShopValue)
   }
   
   render(){
@@ -68,52 +72,8 @@ class Count extends React.Component{
   }
 }
 
-//A是父组件
-class A extends React.Component{
-  state={carName:"奔驰"}
-  changeCar=()=>{
-    this.setState({carName:"奥拓"})
-  }
-  UNSAFE_componentWillReceiveProps(props){
-    console.log("A"+"componentWillReceiveProps",props)
-  }
-  shouldComponentUpdate(){
-    console.log("A"+"shouldComponentUpdate")
-    return true
-  }
-  UNSAFE_componentWillUpdate(){
-    console.log("A"+"componentWillUpdate")
-  }
-  componentDidUpdate(){
-    console.log("A"+"componentDidUpdate")
-  }
-  render(){
-    return (
-      <div>
-        这是A组件
-        <button onClick={this.changeCar}>换车</button>
-        <B carName={this.state.carName}/>
-        </div>
-      
-    )
-  }
-}
+ReactDOM.render(<Count name="tom"/>,document.getElementById('root'))
 
-//B是子组件
-class B extends React.Component{
-  UNSAFE_componentWillReceiveProps(props){
-    console.log("B"+"componentWillReceiveProps",props)
-  }
-  render(){
-    return (
-      <div>这是B组件
-        车为 {this.props.carName}
-        </div>
-    )
-  }
-}
-ReactDOM.render(<Count/>,document.getElementById('root'))
-ReactDOM.render(<A/>,document.getElementById('app'))
 </script>
 </body>
 

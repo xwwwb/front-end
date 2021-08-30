@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../new_js/react.development.js"></script>
+	<script src="../new_js/react-dom.development.js"></script>
+	<script src="../new_js/babel.min.js"></script>
+	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
+	<!-- <script src="../new_js/prop-types.js"></script> -->
+   <style>
+      .list{
+         width: 200px;
+         height: 150px;
+         background-color: skyblue;
+         overflow: auto;
+      }
+      .news{
+         height: 30px;
+      }
+   </style>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+   class NewsList extends React.Component{
+      state={newsArr:[]}
+      componentDidMount(){
+         setInterval(()=>{
+            const {newsArr}=this.state
+            const news = "新闻"+(newsArr.length+1)
+            this.setState({newsArr:[news,...newsArr]})
+         },1000)
+      }
+      getSnapshotBeforeUpdate(){
+         return this.refs.list.scrollHeight
+      }
+      componentDidUpdate(preProps,preState,height){
+         this.refs.list.scrollTop+=this.refs.list.scrollHeight-height
+      }
+      render(){
+         return(
+            <div className="list" ref="list">
+               {
+                  this.state.newsArr.map((n,index)=>{
+                     return <div key={index+n}className="news">{n}</div>
+                  })
+               }
+   </div>
+         )
+      }
+   }
+   ReactDOM.render(<NewsList/>,document.getElementById('root'))
+</script>
+</body>
+
+</html>
