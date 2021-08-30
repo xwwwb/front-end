@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="../new_js/react.development.js"></script>
+	<script src="../new_js/react-dom.development.js"></script>
+	<script src="../new_js/babel.min.js"></script>
+	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
+	<!-- <script src="../new_js/prop-types.js"></script> -->
+</head>
+
+<body>
+<div id="root"></div>
+<div id="app"></div>
+<script type="text/babel">
+
+class Time extends React.Component{
+   state={date:new Date()}
+   componentDidMount(){
+      setInterval(()=>{
+         this.setState({date:new Date()})
+      },1000)
+   }
+   render(){
+      return (
+         <div>
+            <h1>Hello</h1>
+            <input type="text"/>
+            <span>当前时间是：{this.state.date.toTimeString()}</span>
+            </div>
+      )
+   }
+}
+
+ReactDOM.render(<Time/>,document.getElementById('root'))
+
+</script>
+</body>
+
+</html>
