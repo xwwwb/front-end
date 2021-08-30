@@ -16,60 +16,77 @@
 <div id="app"></div>
 <script type="text/babel">
 class Count extends React.Component{
-  constructor(props){
-    console.log("Count-constructor")
-    super(props)
-    this.state={count:0}
-  }
-  //初始化状态
+	/*
+	初始化状态 由ReactDOM.render()触发   初次渲染
+			constructor()
+			getDerivedStateFromProps
+			render
+			componentDidMount() =====> 常用
+				一般在这个钩子中做一些初始化的事，例如：开启定时器、发送网络请求、订阅消息
+	更新阶段 由组件内部this.setState()或父组件重新render触发
+			getDerivedStateFromProps
+			shouldComponentUpdate()
+			render()
+			getSnapshotBeforeUpdate()
+			componentDidUpdate()
+	拆卸组件 由ReactDOM.unmountComponentAtNode()触发
+			componentWillUnmount()  =====> 常用
+				一般在这个钩子中做一些收尾的事，例如：关闭定时器、取消订阅消息
+	*/
+	constructor(props){
+		console.log("Count-constructor")
+		super(props)
+		this.state={count:0}
+	}
+	//初始化状态
  
-  add=()=>{
-    const {count}=this.state
-    this.setState({count:count+1})
-  }
+	add=()=>{
+		const {count}=this.state
+		this.setState({count:count+1})
+	}
 
-  force=()=>{
-    this.forceUpdate()
-    //阀门关闭 也可以更新
-  }
-  //若state的值在任何时候都取决于props 那么可以使用getDerivedStateFromProps
-  // static getDerivedStateFromProps(props,state){
-  //   console.log("getDerivedStateFromProps",props,state)
-  //   return {count:108}
-  // }
-  //https://zh-hans.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate
-  getSnapshotBeforeUpdate(){
-    console.log("getSnapshotBeforeUpdate")
-    return "xwwwb"
-  }
-  componentDidMount(){
-    console.log("componentDidMount")
-  }
-  componentWillUnmount(){
-    console.log("componentWillUnmount")
-  }
-  shouldComponentUpdate(){
-    console.log("shouldComponentUpdate")
-    return true
-  }
+	force=()=>{
+		this.forceUpdate()
+		//阀门关闭 也可以更新
+	}
+	//若state的值在任何时候都取决于props 那么可以使用getDerivedStateFromProps
+	// static getDerivedStateFromProps(props,state){
+	//   console.log("getDerivedStateFromProps",props,state)
+	//   return {count:108}
+	// }
+	//https://zh-hans.reactjs.org/docs/react-component.html#getsnapshotbeforeupdate
+	getSnapshotBeforeUpdate(){
+		console.log("getSnapshotBeforeUpdate")
+		return "xwwwb"
+	}
+	componentDidMount(){
+		console.log("componentDidMount")
+	}
+	componentWillUnmount(){
+		console.log("componentWillUnmount")
+	}
+	shouldComponentUpdate(){
+		console.log("shouldComponentUpdate")
+		return true
+	}
 
-  componentDidUpdate(preProps,preState,snapShopValue){
-    console.log("componentDidUpdate",preProps,preState,snapShopValue)
-  }
-  
-  render(){
-    console.log("render")
-    return(
-      <div>
-        <h2>当前求和为{this.state.count}</h2>
-        <button onClick={this.add}>点我+1</button>
-        <button onClick={()=>{
-          ReactDOM.unmountComponentAtNode(document.getElementById('root'))
-        }}>卸载</button>
-        <button onClick={this.force}>不更改任何状态中的数据 强制更新</button>
-        </div>
-    )
-  }
+	componentDidUpdate(preProps,preState,snapShopValue){
+		console.log("componentDidUpdate",preProps,preState,snapShopValue)
+	}
+	
+	render(){
+		console.log("render")
+		return(
+			<div>
+				<h2>当前求和为{this.state.count}</h2>
+				<button onClick={this.add}>点我+1</button>
+				<button onClick={()=>{
+					ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+				}}>卸载</button>
+				<button onClick={this.force}>不更改任何状态中的数据 强制更新</button>
+				</div>
+		)
+	}
 }
 
 ReactDOM.render(<Count name="tom"/>,document.getElementById('root'))
