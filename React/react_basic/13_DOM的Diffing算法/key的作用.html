@@ -50,6 +50,49 @@
 								2.如果确定只是简单的展示数据，用index也是可以的。
 */
 //#endregion
+
+/* 
+		慢动作回放----使用index索引值作为key
+
+			初始数据：
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			初始的虚拟DOM：
+					<li key=0>小张---18<input type="text"/></li>
+					<li key=1>小李---19<input type="text"/></li>
+
+			更新后的数据：
+					{id:3,name:'小王',age:20},
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			更新数据后的虚拟DOM：
+					<li key=0>小王---20<input type="text"/></li>
+					<li key=1>小张---18<input type="text"/></li>
+					<li key=2>小李---19<input type="text"/></li>
+         小张和小李的DOM重新刷新 如果使用input 存在数据错乱
+
+	-----------------------------------------------------------------
+
+	慢动作回放----使用id唯一标识作为key
+
+			初始数据：
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			初始的虚拟DOM：
+					<li key=1>小张---18<input type="text"/></li>
+					<li key=2>小李---19<input type="text"/></li>
+
+			更新后的数据：
+					{id:3,name:'小王',age:20},
+					{id:1,name:'小张',age:18},
+					{id:2,name:'小李',age:19},
+			更新数据后的虚拟DOM：
+					<li key=3>小王---20<input type="text"/></li>
+					<li key=1>小张---18<input type="text"/></li>
+					<li key=2>小李---19<input type="text"/></li>
+         小张和小李的DOM复用 如果使用input 不存在数据错乱
+*/
+
 class Person extends React.Component{
    state={
       persons:[
@@ -67,15 +110,25 @@ class Person extends React.Component{
          <div>
          <h2>展示人员信息</h2>
          <button onClick={this.add}>添加一个小王</button>
-         <ul>
-            
-               {
-                  this.state.persons.map((obj,index)=>{
-                     return <li key={index}>姓名：{obj.name} 年龄：{obj.age}</li>
-                  })
-               }
-               </ul>
-            </div>
+         <h3>使用index索引值作为key</h3>
+         <ul>  
+         {
+            this.state.persons.map((obj,index)=>{
+               return <li key={index}>姓名：{obj.name} 年龄：{obj.age} <input type="text"/></li>
+            })
+         }
+         </ul>
+         <hr/>
+         <hr/>
+         <h3>使用id（数据的唯一标识）作为key</h3>
+         <ul>  
+         {
+            this.state.persons.map((obj,index)=>{
+               return <li key={obj.id}>姓名：{obj.name} 年龄：{obj.age} <input type="text"/></li>
+            })
+         }
+         </ul>
+         </div>
       )
    }
 }
