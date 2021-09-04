@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "React/react_staging/",
+			"problemMatcher": [],
+			"label": "npm: start - React/react_staging",
+			"detail": "react-scripts start"
+		}
+	]
+}
