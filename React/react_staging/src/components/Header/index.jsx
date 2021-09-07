@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 import './index.css'
 export default class Header extends Component {
+   static propTypes = {
+      add:PropTypes.func.isRequired
+   }
    handleKeyUp=(event)=>{
       const {keyCode,target}=event
       const {add}=this.props

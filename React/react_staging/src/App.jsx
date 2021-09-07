@@ -19,18 +19,38 @@ export default class App extends Component {
       let todo = { id: id, name: value, done: false }
       this.setState({ todos: [todo, ...this.state.todos] })
    }
-
    updateTodo = (id, done) => {
       const { todos } = this.state
       const newTodos = todos.map((todo) => {
          if (todo.id === id)
-            return { ...todo, done: done }
+            return { ...todo, done: done } //这里可以更改完成情况
          else return todo
       }
       )
       this.setState({todos:newTodos})
    }
-
+   deleteTodo=(id)=>{
+      const {todos} = this.state
+      //用来测试数组的每个元素的函数。返回 true 表示该元素通过测试，保留该元素，false 则不保
+      const newTodos = todos.filter((todoObj)=>{
+         return todoObj.id !== id
+      })
+      this.setState({todos:newTodos})
+   }
+   checkAllTodo=(done)=>{
+      const {todos} = this.state
+      const newTodos = todos.map((todoObj)=>{
+         return {...todoObj,done:done}
+      })
+      this.setState({todos:newTodos})
+   }
+   clearAllDone = () =>{
+      const {todos} = this.state
+      const newTodos = todos.filter((todoObj)=>{
+         return !todoObj.done
+      })
+      this.setState({todos:newTodos})
+   }
    render() {
       const { todos } = this.state
       return (
@@ -38,8 +58,8 @@ export default class App extends Component {
             <div className="todo-container">
                <div className="todo-wrap">
                   <Header add={this.add} />
-                  <List updateTodo={this.updateTodo} todos={todos} />
-                  <Footer />
+                  <List updateTodo={this.updateTodo} todos={todos} deleteTodo={this.deleteTodo} />
+                  <Footer todos={todos} checkAllTodo={this.checkAllTodo} clearAllDone={this.clearAllDone}/>
                </div>
             </div>
          </div>
