@@ -17,6 +17,7 @@ export default class Search extends Component {
          },
          error =>{console.log(error)
             // 要存错误对象的一个属性 不能存整个对象 不然无法解析
+             //https://www.g2i.co/blog/understanding-the-objects-are-not-valid-as-a-react-child-error-in-react
             this.props.updateAppState({isLoading:false,err:error.message})
          }
          
