@@ -6,11 +6,17 @@ export default class Search extends Component {
       // 连续解构赋值并重命名
       const {keyWordElement:{value:keyWord}} = this
       console.log(keyWord)
+      this.props.updateAppState({isFirst:false,isLoading:true})
       axios.get(`/api1/search/users?q=${keyWord}`).then(
          response =>{console.log(response.data)
-            this.props.saveUsers(response.data.items)
+            this.props.updateAppState({isLoading:false,users:response.data.items})
+        
          },
-         error =>{console.log(error)}
+         error =>{console.log(error)
+            // 要存错误对象的一个属性 不能存整个对象 不然无法解析
+            this.props.updateAppState({isLoading:false,err:error.message})
+         }
+         
       )
    }
    render() {
