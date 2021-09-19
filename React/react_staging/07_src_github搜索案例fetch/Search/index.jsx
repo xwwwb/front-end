@@ -27,6 +27,7 @@ export default class Search extends Component {
       //#endregion
 
       //使用fetch发送请求
+      // 复习P72
       // 未优化版本
       // fetch(`/api1/search/users?q=${keyWord}`).then(
       //    response=>{console.log('成功了',response)
