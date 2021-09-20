@@ -3,7 +3,7 @@ import {NavLink,BrowserRouter,Route} from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Header from './components/Header'
-import MyNavLink from './components/MyNavLink'
+
 export default class App extends Component {
 	render() {
 		return (
@@ -23,10 +23,9 @@ export default class App extends Component {
 							{/* 在react中靠路由链接实现切换组件  编写路由链接*/}
 							{/* 如果使用了activeClassName 则不会默认指定active属性 使用activeClassName所规定的属性 */}
 							{/* 若不使用activeClassName 则默认指定为active到class中 */}
-							 {/* <NavLink activeClassName=" " className="list-group-item" to="/about">About</NavLink>
-							 <NavLink activeClassName="active demo" className="list-group-item" to="/home">Home</NavLink> */}
-							 <MyNavLink to={"/about"}>About</MyNavLink>
-							 <MyNavLink to={"/home"} >Home</MyNavLink>
+							  <NavLink activeClassName=" " className="list-group-item" to="/about">About</NavLink>
+							 <NavLink activeClassName="active demo" className="list-group-item" to="/home">Home</NavLink>
+			
 						</div>
 					</div>
 					<div className="col-xs-6">
