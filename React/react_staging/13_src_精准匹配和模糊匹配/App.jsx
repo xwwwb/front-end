@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Switch,Redirect,Route} from 'react-router-dom'
+import {Switch,Route} from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Header from './components/Header'
@@ -28,7 +28,7 @@ export default class App extends Component {
 							 {/* 使用switch组件包住注册组件 匹配到可用的就不会接着向下匹配了 */}
 							 
 							 <MyNavLink to={"/about"}>About</MyNavLink>
-							 <MyNavLink to={"/home"} >Home</MyNavLink>
+							 <MyNavLink to={"/home/a/b/c22"} >Home</MyNavLink>
 							 {/* 默认模糊匹配 */}
 							 
 						</div>
@@ -40,9 +40,8 @@ export default class App extends Component {
 								{/* 解决样式丢失 使用绝对路径 或者使用hashhistory 或使用"%PUBLIC_URL% 
 								注意 脚手架中404会传递首页的内容 */}
 								<Switch>
-								<Route path="/about" component={About}/>
-								<Route path="/home" component={Home}/>
-								<Redirect to="/home"></Redirect>
+								<Route exact path="/about" component={About}/>
+								<Route exact={true} path="/home" component={Home}/>
 								</Switch>
 							</div>
 						</div>
