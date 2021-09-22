@@ -27,8 +27,8 @@ export default class App extends Component {
 							 <NavLink activeClassName="active demo" className="list-group-item" to="/home">Home</NavLink> */}
 							 {/* 使用switch组件包住注册组件 匹配到可用的就不会接着向下匹配了 */}
 							 
-							 <MyNavLink to={"/xwwwb/about"}>About</MyNavLink>
-							 <MyNavLink to={"/xwwwb/home"} >Home</MyNavLink>
+							 <MyNavLink to={"/about"}>About</MyNavLink>
+							 <MyNavLink to={"/home"} >Home</MyNavLink>
 							
 							 
 						</div>
@@ -37,12 +37,10 @@ export default class App extends Component {
 						<div className="panel">
 							<div className="panel-body">
 								{/* 注册路由 */}
-								{/* 解决样式丢失 使用绝对路径 或者使用hashhistory 或使用"%PUBLIC_URL% 
-								注意 脚手架中404会传递首页的内容 */}
 								<Switch>
-								<Route path="/xwwwb/about" component={About}/>
-								<Route path="/xwwwb/home" component={Home}/>
-								<Route path="/xwwwb/home" component={Home}/>
+								<Route path="/about" component={About}/>
+								<Route path="/home" component={Home}/>
+								<Route path="/home" component={Home}/>
 								</Switch>
 							</div>
 						</div>
