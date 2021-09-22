@@ -25,22 +25,23 @@ export default class App extends Component {
 							{/* 若不使用activeClassName 则默认指定为active到class中 */}
 							 {/* <NavLink activeClassName=" " className="list-group-item" to="/about">About</NavLink>
 							 <NavLink activeClassName="active demo" className="list-group-item" to="/home">Home</NavLink> */}
-							 //使用switch组件包住注册组件 匹配到可用的就不会接着向下匹配了
-							 <Switch>
+							 {/* 使用switch组件包住注册组件 匹配到可用的就不会接着向下匹配了 */}
+							 
 							 <MyNavLink to={"/about"}>About</MyNavLink>
 							 <MyNavLink to={"/home"} >Home</MyNavLink>
-							 <MyNavLink to={"/home"} >Home2</MyNavLink>
-							 </Switch>
+							
+							 
 						</div>
 					</div>
 					<div className="col-xs-6">
 						<div className="panel">
 							<div className="panel-body">
 								{/* 注册路由 */}
-								
+								<Switch>
 								<Route path="/about" component={About}/>
 								<Route path="/home" component={Home}/>
-							
+								<Route path="/home" component={Home}/>
+								</Switch>
 							</div>
 						</div>
 					</div>
