@@ -21,7 +21,7 @@ export default class Messages extends Component {
                   {/* param search state */}
                 {/* <Link to={`/home/messages/detail/${messageObj.id}/${messageObj.title}`}>{messageObj.title}</Link> */}
                 {/* <Link to={`/home/messages/detail/?id=${messageObj.id}&title=${messageObj.title}`}>{messageObj.title}</Link> */}
-                <Link replace={true} to={{pathname:'/home/messages/detail/',state:{id:messageObj.id,title:messageObj.title}}}>{messageObj.title}</Link>
+                <Link to={{pathname:'/home/messages/detail/',state:{id:messageObj.id,title:messageObj.title}}}>{messageObj.title}</Link>
               </li>
               )
             })
