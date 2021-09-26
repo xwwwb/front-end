@@ -4,9 +4,11 @@ export default class MsgDetail extends Component {
   render() {
     console.log("@",this)
     // const {id,title}=this.props.match.params
+
     // const {search} = this.props.location
     // 使用slice是为了截掉问号
     // const {id,title}=qs.parse(search.slice(1))
+    
     const {id,title} = this.props.location.state || {}
     return (
       <div>
