@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let p = new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+        resolve('ok') 
+      },1000)//异步任务 先执行then再改状态 改状态需要等待时间的 这种情况居多
+      // resolve('ok') //同步任务 先改状态再then
+    })
+    p.then(value=>{
+      console.log(value)
+    },reason=>{
+
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let p1 = new Promise((resolve,reject)=>{
+    // resolve('ok') //如果执行这一句 那么result结果就是p1
+    setTimeout(()=>{
+      resolve('ok') 
+    },1000)
+  })
+  let p2 = Promise.resolve('Success')
+  let p3 = Promise.resolve('yes')
+  const result =Promise.race([p1,p2,p3])
+  console.log(result)
+  </script>
+</body>
+</html>
