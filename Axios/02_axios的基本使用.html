@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+  <div>
+    <button class="button">发送get请求</button>
+    <button class="button">发送post请求</button>
+    <button class="button">发送put请求</button>
+    <button class="button">发送delete请求</button>
+  </div>
+  <script>
+     const btns = document.querySelectorAll('button');
+     btns[0].onclick = function(){
+       axios({
+         //请求类型
+         method:'GET',
+         //URL
+         url:'http://localhost:3000/posts/1',
+
+       }).then(response=>{
+         console.log(response)
+       })
+     }
+
+     btns[1].onclick = function(){
+       axios({
+         //请求类型
+         method:'POST',
+         //URL
+         url:'http://localhost:3000/posts',
+        data:{
+          title:"唔唔唔",
+          author:"xwwwb"
+        }
+       }).then(response=>{
+         console.log(response)
+       })
+     }
+
+     btns[2].onclick = function(){
+       axios({
+         //请求类型
+         method:'PUT',
+         //URL
+         url:'http://localhost:3000/posts/2',
+        data:{
+          title:"唔唔唔",
+          author:"xwwwwwb"
+        }
+       }).then(response=>{
+         console.log(response)
+       })
+     }
+
+     btns[3].onclick = function(){
+       axios({
+         //请求类型
+         method:'DELETE',
+         //URL
+         url:'http://localhost:3000/posts/3',
+
+       }).then(response=>{
+         console.log(response)
+       })
+     }
+  </script>
+</body>
+</html>

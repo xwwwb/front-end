@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "唔唔唔",
+      "author": "xwwwwwb",
+      "id": 2
+    },
+    {
+      "title": "唔唔唔",
+      "author": "xwwwb",
+      "id": 4
+    },
+    {
+      "title": "唔唔唔",
+      "author": "xwwwb",
+      "id": 5
+    },
+    {
+      "title": "唔唔唔",
+      "author": "xwwwb",
+      "id": 6
+    },
+    {
+      "title": "唔唔唔",
+      "author": "xwwwb",
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
