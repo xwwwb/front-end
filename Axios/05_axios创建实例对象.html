@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <button class="button">发送get请求</button>
+    <button class="button">发送post请求</button>
+    <button class="button">发送put请求</button>
+    <button class="button">发送delete请求</button>
+  </div>
+  <script>
+    const btns = document.querySelectorAll('button');
+    const duanzi = axios.create({
+      baseURL: "https://api.apiopen.top",
+      timeout: 2000
+    });
+
+    // duanzi({
+    //   url: '/getJoke'
+    // }).then(response => {
+    //   console.log(response)
+    // })
+    // console.log(duanzi)
+      duanzi.get('/getJoke').then(response=>{
+        console.log(response.data)
+      })
+  </script>
+</body>
+
+</html>
