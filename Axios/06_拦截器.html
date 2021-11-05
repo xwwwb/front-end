@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+
+</head>
+<body>
+  <script>
+    // 设置请求拦截器
+    axios.interceptors.request.use(function (config) {
+      console.log('请求拦截器 成功')
+        return config;
+      }, function (error) {
+        console.log('请求拦截器 失败')
+        return Promise.reject(error);
+      });
+
+    // 设置相应拦截器
+    axios.interceptors.response.use(function (response) {
+     console.log('相应拦截器 成功')
+        return response;
+      }, function (error) {
+        console.log('相应拦截器 失败')
+        return Promise.reject(error);
+      });
+      axios({
+        method:'GET',
+        url:'http://localhost:3000/posts'
+      }).then(response=>{
+        console.log(response)
+      })
+  </script>
+</body>
+</html>
