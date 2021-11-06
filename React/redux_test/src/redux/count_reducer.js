@@ -7,7 +7,9 @@
 // const initState = 0
 // function countReducer(preState=initState,action){
 // 初始化 2
-function countReducer(preState,action){
+
+export default function countReducer(preState,action){
+  console.log(preState,action)
   if(preState == undefined) preState = 0
   // 从action对象中获取 type data
   const {type,data} = action

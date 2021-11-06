@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-
+// 引入store
+import store from '../../redux/store'
 export default class Count extends Component {
-  state = {count:0}
+  state = {name:"xwb"}
   increment = ()=>{
     const {value} = this.selectNumber
-    const {count} = this.state
-    // 这里乘1是强制类型转换
-    this.setState({count:count+value*1})
+    store.dispatch({type:'increment',data:value*1})
   }
   decrement = ()=>{
     const {value} = this.selectNumber
@@ -33,7 +32,7 @@ export default class Count extends Component {
   render() {
     return (
       <div>
-        <h1>当前求和为：{this.state.count}</h1>
+        <h1>当前求和为：{store.getState()}</h1>
         <select ref={c=>{this.selectNumber=c}}>
           <option value="1">1</option>
           <option value="2">2</option>
