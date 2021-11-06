@@ -3,29 +3,35 @@ import React, { Component } from 'react'
 import store from '../../redux/store'
 export default class Count extends Component {
   state = {name:"xwb"}
+
+  // componentDidMount(){
+  //   // 监测redux中的状态变化 只要变化 就调用render
+  //   store.subscribe(()=>{
+  //     this.setState({})
+  //   })
+  // }
+
   increment = ()=>{
     const {value} = this.selectNumber
     store.dispatch({type:'increment',data:value*1})
   }
   decrement = ()=>{
     const {value} = this.selectNumber
-    const {count} = this.state
-    // 这里乘1是强制类型转换
-    this.setState({count:count-value*1})
+    store.dispatch({type:'decrement',data:value*1})
   }
   incrementIfOdd = ()=>{
     const {value} = this.selectNumber
-    const {count} = this.state
-    if (count %2 !=0){
-      this.setState({count:count+value*1})
+    const count = store.getState()
+    if (count %2 !==0){
+      store.dispatch({type:'increment',data:value*1})
     }
   }
   incrementAsync = ()=>{
     const {value} = this.selectNumber
-    const {count} = this.state
+
     // 这里乘1是强制类型转换
     setTimeout(()=>{
-      this.setState({count:count+value*1})
+      store.dispatch({type:'increment',data:value*1})
     },500)
   }
 

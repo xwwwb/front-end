@@ -10,11 +10,12 @@
 
 export default function countReducer(preState,action){
   console.log(preState,action)
-  if(preState == undefined) preState = 0
+  if(preState === undefined) preState = 0
   // 从action对象中获取 type data
   const {type,data} = action
   switch (type){
     case 'increment':
+      console.log("@")
       return preState + data
     case 'decrement':
       return preState - data
