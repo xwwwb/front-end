@@ -7,17 +7,17 @@
 // const initState = 0
 // function countReducer(preState=initState,action){
 // 初始化 2
-import { INCREMENT,DECREMENT } from "./constant"
+
 export default function countReducer(preState,action){
   console.log(preState,action)
   if(preState === undefined) preState = 0
   // 从action对象中获取 type data
   const {type,data} = action
   switch (type){
-    case INCREMENT:
+    case 'increment':
       console.log("@")
       return preState + data
-    case DECREMENT:
+    case 'decrement':
       return preState - data
     default:
       return preState
