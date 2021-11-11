@@ -43,3 +43,19 @@
 **react-redux把业务逻辑和redux拆解了，也就是说如果系统里突然有一天不用redux，要改成mobx了，所有的ui组件可以复用**
 
 **不侵入式的修改UI**
+
+## 求和案例_react-redux基本使用
+
+1. 明确两个概念：
+    - UI组件 不能使用任何redux的API 只负责页面的呈现与交互等
+    - 容器组件 负责和redux通信 将结果交给UI组件
+2. 如何创建一个容器组件 靠react-redux的connect函数
+```
+connect(mapStateToProps,mapDispatchToProps)(UI组件)
+ mapStateToProps 映射状态 返回值是一个对象
+ mapDispatchToProps 映射操作状态的方法 返回值是一个对象
+```
+> 备注  
+容器中的store是靠props传进去的 而不是在容器组件中直接引入  
+mapDispatchToProps 也可以是一个对象
+
