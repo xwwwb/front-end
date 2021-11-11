@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-export default class Count extends Component {
+import { connect } from 'react-redux'
+import { createDecrementAction, createIncrementAction, createIncrementAsyncAction } from "../../redux/count_action";
+
+//定义UI组件
+class Count extends Component {
   state = { name: "xwb" }
 
   increment = () => {
@@ -39,3 +43,12 @@ export default class Count extends Component {
     )
   }
 }
+
+export default connect(
+  state => ({ count: state }),
+  {
+    jia:createIncrementAction,
+    jian:createDecrementAction,
+    jiaAsync:createIncrementAsyncAction
+  }
+)(Count) 

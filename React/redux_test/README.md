@@ -44,7 +44,7 @@
 
 **不侵入式的修改UI**
 
-## 求和案例_react-redux基本使用
+## 4.求和案例_react-redux基本使用
 
 1. 明确两个概念：
     - UI组件 不能使用任何redux的API 只负责页面的呈现与交互等
@@ -59,3 +59,16 @@ connect(mapStateToProps,mapDispatchToProps)(UI组件)
 容器中的store是靠props传进去的 而不是在容器组件中直接引入  
 mapDispatchToProps 也可以是一个对象
 
+## 5.求和案例_React-redux优化
+1. 容器组件和UI组件混成一个文件
+2. 无需自己给容器组件传递store 给<App/>包装一个<Provider store={store}>即可
+3. 使用了react-redux后再也不用自己检测redux中状态的变化 容器组件可以自动完成这个工作
+4. mapDispatchToProps也可以简单的写成一个对象
+5. 一个组件要和redux`打交道`要经过哪几步
+    - 定义好UI组件 不爆露
+    - 引入connect生成一个容器组件 并暴漏
+    - connect(
+        state =>({key:value})
+        {key:xxxAction}
+    )(UI组件)
+    - 在UI组件中通过this.props.xxx读取和操作状态
