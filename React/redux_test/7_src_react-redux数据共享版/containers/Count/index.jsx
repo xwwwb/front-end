@@ -1,6 +1,10 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { increment, decrement, incrementAsync } from "../../redux/actions/count"
+import {
+	createDecrementAction,
+	createIncrementAction,
+	createIncrementAsyncAction,
+} from "../../redux/actions/count"
 
 //定义UI组件
 class Count extends Component {
@@ -8,21 +12,21 @@ class Count extends Component {
 
 	increment = () => {
 		const { value } = this.selectNumber
-		this.props.increment(value * 1)
+		this.props.jia(value * 1)
 	}
 	decrement = () => {
 		const { value } = this.selectNumber
-		this.props.decrement(value * 1)
+		this.props.jian(value * 1)
 	}
 	incrementIfOdd = () => {
 		const { value } = this.selectNumber
 		if (this.props.count % 2 !== 0) {
-			this.props.increment(value * 1)
+			this.props.jia(value * 1)
 		}
 	}
 	incrementAsync = () => {
 		const { value } = this.selectNumber
-		this.props.incrementAsync(value * 1, 500)
+		this.props.jiaAsync(value * 1, 500)
 	}
 
 	render() {
@@ -31,8 +35,7 @@ class Count extends Component {
 			<div>
 				<h1>我是Count组件</h1>
 				<h4>
-					当前求和为：{this.props.count},下方组件总人数为
-					{this.props.personCount}
+					当前求和为：{this.props.count},下方组件总人数为{this.props.renshu}
 				</h4>
 				<select
 					ref={(c) => {
@@ -54,10 +57,10 @@ class Count extends Component {
 }
 
 export default connect(
-	(state) => ({ count: state.count, personCount: state.persons.length }),
+	(state) => ({ count: state.he, renshu: state.rens.length }),
 	{
-		increment,
-		decrement,
-		incrementAsync,
+		jia: createIncrementAction,
+		jian: createDecrementAction,
+		jiaAsync: createIncrementAsyncAction,
 	}
 )(Count)

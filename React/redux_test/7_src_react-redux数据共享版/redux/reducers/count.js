@@ -7,7 +7,7 @@
 // const initState = 0
 // function countReducer(preState=initState,action){
 // 初始化 2
-import { INCREMENT,DECREMENT } from "./constant"
+import { INCREMENT,DECREMENT } from "../constant"
 export default function countReducer(preState,action){
   console.log(preState,action)
   if(preState === undefined) preState = 0
