@@ -8,12 +8,9 @@ import { createStore, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
 //引入thunk用于支持异步action
 
-// 引入redux-devtools-extension
-import { composeWithDevTools } from "redux-devtools-extension"
-
 import allReducer from "./reducers"
 
 export default createStore(
 	allReducer,
-	composeWithDevTools(applyMiddleware(thunk))
+	applyMiddleware(thunk)
 )
