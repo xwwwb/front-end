@@ -19,7 +19,7 @@
       "target": "ES6",
       // 用来指定模块化的规范
       // 'none', 'commonjs', 'amd', 'system', 'umd', 'es6', 'es2015', 'es2020', 'esnext'
-      "module": "es2015",
+      "module": "amd",
       // 用来指定项目中要使用的库
       // "lib": []
       // 用来指定编译后文件所在目录
@@ -37,9 +37,19 @@
       "noEmit": false,
       // 当有错误时 不生成编译后的文件
       "noEmitOnError": false,
+      
+      // 所有严格检查的总开关 如果这里为true 下面的都开开了
+      "strict": true,
+
       // 是否启用严格模式
       "alwaysStrict": true,
-      //
+      // 不允许隐式的any类型
+      "noImplicitAny": true,
+      // 不允许不明确类型的this
+      "noImplicitThis": true,
+
+      // 严格检查空值
+      "strictNullChecks": true
 
     }
 }
