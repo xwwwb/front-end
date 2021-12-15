@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>你好：{{name}}</h1>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+    // 这里用vm作实例对象是因为 viewmod 
+    const vm = new Vue({
+      data(){
+        return {
+          name:"xwwwb"
+        }
+      }
+    })
+    vm.$mount("#root")
+  </script>
+</body>
+
+</html>

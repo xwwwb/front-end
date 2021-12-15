@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="root">  
+   <!-- 单向数据绑定：<input type="text" v-bind:value="name">
+   <br>
+   双向数据绑定：<input type="text" v-model:value="name">
+   -->
+   单向数据绑定：<input type="text" :value="name">
+   <br>
+   双向数据绑定：<input type="text" v-model="name">
+  
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+      // el: document.getElementById('root')
+      el:'#root', // 用于指定当前Vue实例为哪个容器服务 通常为CSS选择器字符串
+      data:{
+      name:"xwwwb"
+      }
+    })
+  </script>
+</body>
+</html>
