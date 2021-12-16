@@ -69,3 +69,18 @@ MVVM模型
 2. vm身上所有的属性 及 Vue原型上所有属性，在Vue模板中都可以直接使用。
 
 <img src="images/image-20211215214202260.png" alt="image-20211215214202260" style="zoom:50%;" />
+
+# Vue中的数据代理
+
+1. Vue中的数据代理：
+  通过vm对象来代理data对象中属性的操作（读/写）
+
+2. Vue中数据代理的好处：
+  更加方便的操作data中的数据
+
+3. 基本原理：
+  通过Object.defineProperty()把data对象中所有属性添加到vm上。
+
+  为每一个添加到vm上的属性，都指定一个getter/setter。
+
+  在getter/setter内部去操作（读/写）data中对应的属性。
