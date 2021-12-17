@@ -73,14 +73,23 @@ MVVM模型
 # Vue中的数据代理
 
 1. Vue中的数据代理：
-  通过vm对象来代理data对象中属性的操作（读/写）
+    通过vm对象来代理data对象中属性的操作（读/写）
 
 2. Vue中数据代理的好处：
-  更加方便的操作data中的数据
+    更加方便的操作data中的数据
 
 3. 基本原理：
-  通过Object.defineProperty()把data对象中所有属性添加到vm上。
+    通过Object.defineProperty()把data对象中所有属性添加到vm上。
 
   为每一个添加到vm上的属性，都指定一个getter/setter。
 
   在getter/setter内部去操作（读/写）data中对应的属性。
+
+# 事件绑定
+
+事件的基本使用：
+1. 使用v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名；
+2. 事件的回调需要配置在methods对象中，最终会在vm上；
+3. methods中配置的函数，不要用箭头函数！否则this就不是vm了；
+4. methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或 组件实例对象；
+5. @click="demo" 和 @click="demo($event)" 效果一致，但后者可以传参；
