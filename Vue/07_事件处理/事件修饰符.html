@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .div1 {
+      height: 50px;
+      background-color: skyblue;
+    }
+
+    .div2 {
+      height: 30px;
+      background-color: wheat;
+    }
+
+    ul {
+      height: 200px;
+      background-color: wheat;
+      width: 200px;
+      overflow: auto;
+    }
+
+    li {
+      height: 100px;
+      background-color: lightcyan;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <h1>欢迎{{name}}来学习</h1>
+
+    <a href="http://xwwwb.com" @click="showInfo">点我提示信息</a>
+    <a href="http://xwwwb.com" @click.prevent="showInfo2">点我提示信息</a>
+
+    <div @click="showInfo2">
+      <a href="http://xwwwb.com" @click.stop.prevent="showInfo2">点我提示信息</a>
+    </div>
+    <button @click.once="showInfo2">点我提示信息</button>
+
+    <div class="div1" @click=showMsg(1)>
+      div1
+      <div class="div2" @click="showMsg(2)">div2</div>
+    </div>
+
+
+    <div class="div1" @click.capture=showMsg(1)>
+      div1
+      <div class="div2" @click="showMsg(2)">div2</div>
+    </div>
+
+    <!-- self在一定程度上能实现阻止冒泡 -->
+    <div @click.self="showInfo2">
+      <a href="http://xwwwb.com" @click.prevent="showInfo2">点我提示信息</a>
+    </div>
+
+    <!-- 尝试去掉passive 会发现 滚动条的性能差距很大 -->
+    <ul @wheel.passive="scroll">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+
+
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        name: "xwwwb",
+
+      },
+      methods: {
+        showInfo(e) {
+          e.preventDefault()
+          alert("hello")
+        },
+        showInfo2(e) {
+          alert("hello")
+          console.log(e.target)
+        },
+        showMsg(num) {
+          console.log(num)
+        },
+        scroll() {
+          for (let index = 0; index < 100000; index++) {
+            console.log("别滚动了！")
+
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

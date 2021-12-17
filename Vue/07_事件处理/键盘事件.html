@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>欢迎{{name}}来学习</h1>
+    <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">    
+    <input type="text" placeholder="按下回车提示输入" @keyup.huiche="showInfo">
+    <input type="text" placeholder="按下ctrl" @keyup.ctrl="showInfo">  
+    <input type="text" placeholder="按下ctrl+y" @keyup.ctrl.y="showInfo">
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    Vue.config.keyCodes.huiche = 13
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        name: "xwwwb",
+      },
+      methods: {
+        showInfo(e) {
+          console.log(e.keyCode)
+          // if(e.keyCode !== 13) return //原生js写法
+        }
+
+      }
+
+    })
+  </script>
+</body>
+
+</html>
