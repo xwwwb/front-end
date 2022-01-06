@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>欢迎{{name}}来学习</h1>
+    姓：<input type="text" v-model="firstName"> <br>
+    名：<input type="text" v-model="lastName"><br>
+    全名：{{fullName}}
+
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        name: "xwwwb",
+        firstName:"张",
+        lastName:"三"
+      },
+      computed:{
+        fullName:{
+          // get有什么作用 当有人读取fullName时 get就会被调用 且返回值就作为fullName的值
+          get(){
+             return this.firstName+"-"+this.lastName
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

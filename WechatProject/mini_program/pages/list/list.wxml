@@ -1,0 +1,45 @@
+<view class="container1">
+  <view>A</view>
+  <view>B</view>
+  <view>C</view>
+</view>
+<view style="height: 100px;"></view>
+<scroll-view class="container2" scroll-y>
+  <view>A</view>
+  <view>B</view>
+  <view>C</view>
+</scroll-view>
+
+<view style="height: 100px;"></view>
+
+<swiper class="swpier-contanier" indicator-dots>
+  <swiper-item>
+    <view class="item">A</view>
+  </swiper-item>
+  <swiper-item>
+    <view class="item">B</view>
+  </swiper-item>
+  <swiper-item>
+    <view class="item">C</view>
+  </swiper-item>
+</swiper>
+<view style="height: 100px;"></view>
+<text user-select>支持长按选中</text>
+<view style="height: 100px;"></view>
+<rich-text nodes="<h1 style='color:red'>Hello World!</h1>"></rich-text>
+<button>Button</button>
+<button type="warn">Button</button>
+<button type="primary">Button</button>
+<button size="mini">Button</button>
+<button size="mini" type="warn">Button</button>
+<button size="mini" type="primary">Button</button>
+<button size="mini" plain>Button</button>
+<button size="mini" type="warn" plain>Button</button>
+<button size="mini" type="primary" plain>Button</button>
+<view></view>
+<image src="{{imgSrc}}" mode="heightFix"></image>
+<view></view>
+<text user-select>{{info}}</text>
+<view></view>
+<view>{{randomNum>5 ?"数字大于五":"数字小于五"}}</view>
+<view>十位数字为：{{randomNum2 *100}}</view>

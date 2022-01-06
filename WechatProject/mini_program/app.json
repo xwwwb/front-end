@@ -1,0 +1,43 @@
+{
+    "pages": [
+        "pages/home/home",
+        "pages/events/events",
+        "pages/list/list",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/event"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "xwwwb",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 100
+
+    },
+    "tabBar": {
+        "list": [{
+                "pagePath": "pages/home/home",
+                "text": "主页",
+                "iconPath": "/images/icon/home.png",
+                "selectedIconPath": "/images/icon/home-filling.png"
+            },
+            {
+                "pagePath": "pages/events/events",
+                "text": "主页",
+                "iconPath": "/images/icon/home.png",
+                "selectedIconPath": "/images/icon/home-filling.png"
+            },
+            {
+                "pagePath": "pages/list/list",
+                "text": "主页",
+                "iconPath": "/images/icon/home.png",
+                "selectedIconPath": "/images/icon/home-filling.png"
+            }
+        ]
+      
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,6 @@
+/* pages/events/events.wxss */
+@import "/common/common.wxss";
+/* 导入样式表要用分号结尾 */
+view{
+    background-color: lightpink;
+}

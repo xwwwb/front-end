@@ -1,0 +1,34 @@
+/* pages/home/home.wxss */
+.grid-item{
+width: 33.33%;
+height: 200rpx;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+border-right: 1rpx solid #efefef;
+border-bottom: 1rpx solid #efefef;
+box-sizing: border-box;
+}
+.grid-list{
+    border-top: 1rpx solid #efefef;
+    border-left: 1rpx solid #efefef;
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid-item image{
+    height: 60rpx;
+    width: 60rpx;
+}
+.grid-item text{
+    font-size: 24rpx;
+    margin-top: 10rpx;
+}
+.img-box{
+    display: flex;
+    padding: 20rpx 10rpx ;
+    justify-content: space-around;
+}
+.img-box image{
+    width: 45%;
+}

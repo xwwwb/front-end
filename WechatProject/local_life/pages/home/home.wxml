@@ -1,0 +1,20 @@
+<view style="padding: 5px;">
+    <swiper style="height: 180px;" indicator-dots circular>
+        <swiper-item wx:for="{{swiperList}}" wx:key="id">
+            <image style="width: 100%;height: 100%;" src="{{item.image}}" mode="scaleToFill"></image>
+        </swiper-item>
+    </swiper>
+    <!-- 九宫格区域 -->
+    <view class="grid-list">
+        <view class="grid-item" wx:for="{{gridList}}" wx:key="id">
+            <image src="{{item.icon}}"></image>
+            <text>{{item.name}}</text>
+        </view>
+    </view>
+
+    <!-- 图片区 -->
+    <view class="img-box">
+    <image src="/images/link-01.png" mode="widthFix"></image>
+    <image src="/images/link-02.png" mode="widthFix"></image>
+    </view>
+</view>

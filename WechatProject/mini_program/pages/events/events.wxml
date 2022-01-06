@@ -1,0 +1,39 @@
+<button type="primary" bindtap="handletap">+1</button>
+<view>{{count}}</view>
+<button type="primary" bindtap="handletap2" data-info="{{3}}">+2</button>
+
+<input bindinput="handleinput" value="{{msg}}" type="text"></input>
+
+<!-- wx:if控制是否渲染 -->
+<view wx:if="{{condition}}">true</view>
+<view wx:else>false</view>
+
+<button type="default" bindtap="handleboolean">改变真假</button>
+
+<!-- block不会有任何现实 纯当包裹 看审查也看不到block -->
+<block wx:if="{{condition}}">
+    <view>true</view>
+    <view>true</view>  <view>true</view>  <view>true</view>
+</block>
+
+<block wx:else>
+    <view>false</view>
+    <view>false</view>  <view>false</view>  <view>false</view>
+</block>
+<!-- 
+if是动态创建移除组件
+hidden是使用了dispaly:none -->
+ <view bindtap="handlehid" hidden="{{hidden}}">点我隐藏自己</view>
+
+ <view wx:for="{{arr1}}" wx:key="index"> 
+ 索引是 {{index}} item项是{{item}}
+ </view>
+
+<!-- 一下操作可以改索引和item的名字 不是很常用 -->
+ <view wx:for="{{arr1}}" wx:for-index="ind" wx:for-item="it" wx:key="ind"> 
+ 索引是 {{ind}} item项是{{it}}
+ </view>
+
+<view wx:for="{{userList}}" wx:key="id">
+id:{{item.id}} name:{{item.name}}
+</view>
