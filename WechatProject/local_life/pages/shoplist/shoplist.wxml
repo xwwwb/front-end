@@ -5,7 +5,7 @@
         </view>
         <view>
             <text class="shop-title">{{item.name}}</text>
-            <text>电话：{{item.phone}}</text>
+            <text>电话：{{tools.splitPhone(item.phone)}}</text>
             <text>地址：{{item.address}}</text>
             <text>营业时间：{{item.businessHours}}</text>
         </view>
@@ -19,3 +19,5 @@
         return src
     }
 </wxs>
+
+<wxs src="../../utils/tools.wxs" module="tools">   </wxs>

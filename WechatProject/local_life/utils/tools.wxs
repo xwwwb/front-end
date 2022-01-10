@@ -1,6 +1,15 @@
-function toLower(str){
+function toLower(str) {
     return str.toLowerCase()
 }
-module.exports={
-    toLower:toLower
+
+function splitPhone(str) {
+    if (str.length !== 11) return str
+    arr = str.split('')
+    arr.splice(3,0,'-')
+    arr.splice(8,0,'-')
+    return arr.join('')
+}
+module.exports = {
+    toLower: toLower,
+    splitPhone: splitPhone
 }

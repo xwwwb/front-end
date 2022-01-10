@@ -1,0 +1,20 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+/* 只有 class 选择器受样式隔离的影响 */
+.g-red-text {
+  color: red;
+}
+
+/* 属性、标签、id 选择器不受样式隔离的影响 */
+/* text {
+  font-size: 25rpx;
+} */

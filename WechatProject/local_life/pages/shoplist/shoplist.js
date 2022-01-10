@@ -12,7 +12,7 @@ Page({
         total: 0,
         isLoding: false
     },
-    getShopList() {
+    getShopList(cb) {
 
         wx.showLoading({
             title: '加载中',
@@ -33,12 +33,16 @@ Page({
                     shopList: [...this.data.shopList, ...res.data],
                     total: res.header['X-Total-Count']
                 })
+
+            },
+            complete: () => {
                 wx.hideLoading({
-                    success: (res) => {},
+
                 })
                 this.setData({
                     isLoding: false
                 })
+              cb && cb()
             }
         })
     },
@@ -86,6 +90,16 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        this.setData({
+            shopList: [],
+            page: 1,
+            total: 0,
+        })
+        this.getShopList(()=>{
+            wx.stopPullDownRefresh({
+              success: (res) => {},
+            })
+        })
 
     },
 
@@ -93,6 +107,13 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
+        if (this.data.pageSize * this.data.page >= this.data.total) {
+            wx.showToast({
+                title: '数据加载完毕',
+            })
+            return
+        }
+
         if (this.data.isLoding) return
         this.setData({
             page: this.data.page + 1
