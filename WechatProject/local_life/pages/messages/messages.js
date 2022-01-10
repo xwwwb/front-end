@@ -5,9 +5,14 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        count:0,
+        name:'zs',
+        name2:'ZS'
     },
 
+    handletap(){
+        this.setData({count:this.data.count+1})
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -47,14 +52,18 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        console.log("触发了下拉刷新动作")
+        this.setData({count:0})
+        wx.stopPullDownRefresh({
+          success: (res) => {},
+        })
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        console.log("上拉触底了")
     },
 
     /**

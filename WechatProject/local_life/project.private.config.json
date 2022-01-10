@@ -1,0 +1,30 @@
+{
+    "setting": {},
+    "condition": {
+        "plugin": {
+            "list": []
+        },
+        "game": {
+            "list": []
+        },
+        "gamePlugin": {
+            "list": []
+        },
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "联系我们",
+                    "pathName": "pages/messages/messages",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/shoplist/shoplist",
+                    "query": "id=2&title=美食",
+                    "scene": null
+                }
+            ]
+        }
+    }
+}

@@ -1,1 +1,9 @@
 /* pages/contact/contact.wxss */
+.colorItem{
+    height: 200rpx;
+    margin: 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

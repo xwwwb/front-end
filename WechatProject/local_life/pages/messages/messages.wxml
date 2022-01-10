@@ -1,2 +1,13 @@
-<!--pages/messages/messages.wxml-->
-<text>pages/messages/messages.wxml</text>
+<view style="text-align: center;">{{count}}</view>
+<button bindtap="handletap">+1</button>
+
+
+<view>{{m1.toUpper(name)}}</view>
+<view>{{m2.toLower(name2)}}</view>
+<wxs module="m1">
+module.exports.toUpper=function(str){
+    return str.toUpperCase()
+}
+</wxs>
+<wxs module="m2" src="../../utils/tools.wxs"></wxs>
+<view style="background-color: lightpink;height: 800px;"></view>

@@ -1,0 +1,21 @@
+<view class="shopList">
+    <view wx:for="{{shopList}}" class="item" wx:key="id">
+        <view>
+            <image src="{{m.random(item.images)}}"></image>
+        </view>
+        <view>
+            <text class="shop-title">{{item.name}}</text>
+            <text>电话：{{item.phone}}</text>
+            <text>地址：{{item.address}}</text>
+            <text>营业时间：{{item.businessHours}}</text>
+        </view>
+    </view>
+</view>
+<wxs module="m">
+    module.exports.random = function (images) {
+        var size = images.length
+        var num = Math.floor(Math.random() * size);
+        var src = images[num]
+        return src
+    }
+</wxs>

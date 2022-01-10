@@ -6,15 +6,15 @@
     </swiper>
     <!-- 九宫格区域 -->
     <view class="grid-list">
-        <view class="grid-item" wx:for="{{gridList}}" wx:key="id">
+        <navigator class="grid-item" wx:for="{{gridList}}" wx:key="id" url="/pages/shoplist/shoplist?id={{item.id}}&title={{item.name}}" >
             <image src="{{item.icon}}"></image>
             <text>{{item.name}}</text>
-        </view>
+        </navigator>
     </view>
 
     <!-- 图片区 -->
     <view class="img-box">
     <image src="/images/link-01.png" mode="widthFix"></image>
-    <image src="/images/link-02.png" mode="widthFix"></image>
+    <image bindtap="handletap" src="/images/link-02.png" mode="widthFix"></image>
     </view>
 </view>

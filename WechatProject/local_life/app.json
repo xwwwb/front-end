@@ -2,7 +2,9 @@
   "pages":[
     "pages/home/home",
     "pages/messages/messages",
-    "pages/contact/contact"
+    "pages/contact/contact",
+    "pages/info/info",
+    "pages/shoplist/shoplist"
   ],
   "window":{
     "backgroundTextStyle":"light",
