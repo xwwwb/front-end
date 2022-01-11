@@ -1,1 +1,7 @@
-<my-test1></my-test1>
+<my-test1 max="{{9}}"></my-test1>
+<my-test2>
+</my-test2>
+<my-test3></my-test3>
+<my-test4>
+<view>hahaha</view>
+</my-test4>

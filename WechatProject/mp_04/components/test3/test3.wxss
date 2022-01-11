@@ -1,8 +1,7 @@
 /* components/test3/test3.wxss */
-.colorBox {
-  line-height: 200rpx;
-  font-size: 24rpx;
-  color: white;
-  text-shadow: 0rpx 0rpx 2rpx black;
-  text-align: center;
+.colorBox{
+    height: 300rpx;
+    line-height: 300rpx;
+    text-align: center;
+    color:wheat
 }

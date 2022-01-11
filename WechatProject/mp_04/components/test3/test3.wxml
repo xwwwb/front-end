@@ -1,5 +1,6 @@
-<view style="background-color: rgb({{fullColor}});" class="colorBox">颜色值：{{fullColor}}</view>
-<button size="mini" type="default" bindtap="changeR">R</button>
-<button size="mini" type="primary" bindtap="changeG">G</button>
-<button size="mini" type="warn" bindtap="changeB">B</button>
-<!-- <view>{{rgb.r}}, {{rgb.g}}, {{rgb.b}}</view> -->
+<view style="background-color: rgb({{fullColor}});" class="colorBox">
+颜色值：{{fullColor}}
+</view>
+<button size="mini" bindtap="addR" type="warn">R</button>
+<button size="mini" bindtap="addG" type="primary">G</button>
+<button size="mini" bindtap="addB" type="default">B</button>
