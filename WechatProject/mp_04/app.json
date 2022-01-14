@@ -39,6 +39,7 @@
         "my-test1": "/components/test/test",
         "my-test2": "/components/test2/test2",
         "my-test3": "/components/test3/test3",
-        "my-test4": "/components/test4/test4"
+        "my-test4": "/components/test4/test4",
+        "my-test5": "/components/test5/test5"
     }
 }

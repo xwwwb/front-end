@@ -1,0 +1,4 @@
+<view>组件内部count:{{count}}</view>
+<button bindtap="addCount" >内部count+1并影响外部count和内部一致</button>
+
+<view>behavior中的数据{{username}}</view>

@@ -5,9 +5,22 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        count :0
     },
 
+    syncCount(e){
+       this.setData({
+           count:e.detail.value
+       })
+    },
+    addInnerCount(){
+        const app = this.selectComponent(".mytest5")
+        console.log(app)
+        // app的原型链上有这个方法：addCount()
+        app.setData({
+            count:app.data.count+1
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

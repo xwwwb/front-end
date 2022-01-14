@@ -5,3 +5,6 @@
 <my-test4>
 <view>hahaha</view>
 </my-test4>
+<view>父组件中count值：{{count}}</view>
+<my-test5 bind:sync="syncCount" class="mytest5"></my-test5>
+<button bindtap="addInnerCount">在外部使用selectcomponent给内部count+1</button>
