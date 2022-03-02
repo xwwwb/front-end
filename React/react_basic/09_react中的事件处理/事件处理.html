@@ -25,6 +25,8 @@ class Dome extends React.Component{
   //不推荐大量使用Ref 
   //https://zh-hans.reactjs.org/docs/refs-and-the-dom.html#dont-overuse-refs
   //当发生事件的元素正好是要操作的元素 就能省略ref
+
+  //https://zh-hans.reactjs.org/docs/handling-events.html#passing-arguments-to-event-handlers 官网的写法
   showData=(event)=>{
     const {value} = event.target
     alert(value)

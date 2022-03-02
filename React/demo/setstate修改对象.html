@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>setstate测试</title>
+  <script src="../react_basic/js/react.development.js"></script>
+  <script src="../react_basic/js/react-dom.development.js"></script>
+  <script src="../react_basic/js/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!--这里一定是Babel-->
+  <script type="text/babel">
+    // 创建虚拟DOM
+    class App extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          data: {
+            a: 1,
+            b: 2
+          }
+
+        }
+      }
+      componentDidMount() {
+        //这里的data.b会被冲掉
+        this.setState({
+          data: {
+            a: 2
+          }
+        })
+      }
+      render() {
+        console.log(this)
+        return (
+          <h2>{this.state.data.a},{this.state.data.b}</h2>
+        )
+      }
+    }
+    // 渲染虚拟DOM到页面
+    ReactDOM.render(<App />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>
