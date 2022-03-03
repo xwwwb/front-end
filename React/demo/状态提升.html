@@ -11,20 +11,72 @@
 	</head>
 
 	<body>
+		
 		<div id="root"></div>
 		<script type="text/babel">
+			const toC = (temperature) => {
+				return ((temperature - 32) * 5) / 9
+			}
+			const toF = (temperature) => {
+				return (temperature * 9) / 5 + 32
+			}
+			function tryConvert(temperature, convert) {
+				const input = parseFloat(temperature)
+				if (Number.isNaN(input)) {
+					return ""
+				}
+				const output = convert(input)
+				const rounded = Math.round(output * 1000) / 1000
+				return rounded.toString()
+			}
+			class BoilingVerdict extends React.Component{
+				constructor(props) {
+					super(props)
+				}
+				render(){
+					if(parseFloat(this.props.celsius) > 100){
+						return ("水烧开了")
+					}
+					else{
+						return ("水没烧开")
+					}
+				}
+			}
 			class App extends React.Component {
-        constructor(props) {
-          super(props)
-          this.state = {
-            temperature:36
-          }
-        }
+				constructor(props) {
+					super(props)
+					this.state = {
+						temperature: "",
+						scale: "f",
+					}
+					this.handleFChange = this.handleFChange.bind(this)
+					this.handleCChange = this.handleCChange.bind(this)
+				}
+
+				handleFChange(temperature) {
+					this.setState({ temperature, scale: "f" })
+				}
+				handleCChange(temperature) {
+					this.setState({ temperature, scale: "c" })
+				}
 				render() {
+					const { scale, temperature } = this.state
+					const C = scale === "c" ? temperature : tryConvert(temperature, toC)
+					const F = scale === "f" ? temperature : tryConvert(temperature, toF)
+					console.log(C, F)
 					return (
 						<div>
-							<Temperature scale={"c"} temperature={this.state.temperature}/>
-							<Temperature scale={"f"} temperature={this.state.temperature}/>
+							<Temperature
+								scale={"c"}
+								temperature={C}
+								handleChanges={this.handleCChange}
+							/>
+							<Temperature
+								scale={"f"}
+								temperature={F}
+								handleChanges={this.handleFChange}
+							/>
+							<BoilingVerdict celsius = {C}/>
 						</div>
 					)
 				}
@@ -36,18 +88,22 @@
 			class Temperature extends React.Component {
 				constructor(props) {
 					super(props)
-					this.state = {
-					
-					}
+					this.handleChange = this.handleChange.bind(this)
+				}
+				handleChange = (e) => {
+					const { value } = e.target
+					this.props.handleChanges(value)
 				}
 
 				render() {
 					return (
 						<fieldset>
 							<legend>请输入{scaleNames[this.props.scale]}</legend>
-							<input type="text" 
-              onChange={}
-              />
+							<input
+								type="text"
+								onChange={this.handleChange}
+								value={this.props.temperature}
+							/>
 						</fieldset>
 					)
 				}
