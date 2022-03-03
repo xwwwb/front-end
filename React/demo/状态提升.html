@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>状态提升</title>
+		<script src="../react_basic/js/react.development.js"></script>
+		<script src="../react_basic/js/react-dom.development.js"></script>
+		<script src="../react_basic/js/babel.min.js"></script>
+	</head>
+
+	<body>
+		<div id="root"></div>
+		<script type="text/babel">
+			class App extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = {
+            temperature:36
+          }
+        }
+				render() {
+					return (
+						<div>
+							<Temperature scale={"c"} temperature={this.state.temperature}/>
+							<Temperature scale={"f"} temperature={this.state.temperature}/>
+						</div>
+					)
+				}
+			}
+			const scaleNames = {
+				c: "摄氏度",
+				f: "华氏度",
+			}
+			class Temperature extends React.Component {
+				constructor(props) {
+					super(props)
+					this.state = {
+					
+					}
+				}
+
+				render() {
+					return (
+						<fieldset>
+							<legend>请输入{scaleNames[this.props.scale]}</legend>
+							<input type="text" 
+              onChange={}
+              />
+						</fieldset>
+					)
+				}
+			}
+
+			ReactDOM.render(<App />, document.getElementById("root"))
+		</script>
+	</body>
+</html>
