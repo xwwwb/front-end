@@ -1,0 +1,42 @@
+import React, { Component } from "react"
+
+import store from "../../redux/store"
+export default class Count extends Component {
+	constructor(props) {
+		super(props)
+		this.decreament = this.decreament.bind(this)
+	}
+
+  // 这里采用api创建ref
+	c = React.createRef()
+
+	increament = () => {
+		const { value } = this.c.current
+		console.log(value)
+		store.dispatch({ type: "increament", value: value * 1 })
+	}
+
+	decreament = function () {
+		console.log(this)
+		const { value } = this.c.current
+		console.log(value)
+		store.dispatch({ type: "decreament", value: value * 1 })
+	}
+
+	render() {
+		console.log(store)
+		return (
+			<div>
+				<h1>当前Count为{store.getState()}</h1>
+				<select ref={this.c}>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+				&nbsp;
+				<button onClick={this.increament}>+</button>
+				<button onClick={this.decreament}>-</button>
+			</div>
+		)
+	}
+}

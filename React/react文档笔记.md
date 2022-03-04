@@ -456,3 +456,14 @@ this.inputElement.current.focus();
 https://zh-hans.reactjs.org/docs/code-splitting.html
 
 没看懂
+
+# Context
+
+https://zh-hans.reactjs.org/docs/context.html
+
+Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
+
+全文要求掌握 这里不记了
+
+没怎么看懂
+
