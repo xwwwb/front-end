@@ -1,18 +1,29 @@
-// pages/home/home.js
+import {
+  createStoreBindings
+} from 'mobx-miniprogram-bindings'
+import {
+  store
+} from '../../store/store'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      haha:1
   },
- get(){
-    const r =wx.p.request({
+
+  btnHandler(e) {
+    console.log(e)
+    this.updateNum1(e.target.dataset.step)
+    console.log(this)
+  },
+  get() {
+    const r = wx.p.request({
       url: 'https://www.escook.cn/api/get',
-      method:'GET'
+      method: 'GET'
     })
-    r.then((res)=>{
+    r.then((res) => {
       console.log(res)
     })
   },
@@ -20,7 +31,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.storeBindings = createStoreBindings(this, {
+      store,
+      fields: ['numA', 'numB', 'sum'],
+      actions: ['updateNum1']
+    })
   },
 
   /**
@@ -48,7 +63,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.storeBindings.destroyBindings()
   },
 
   /**

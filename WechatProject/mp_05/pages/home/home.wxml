@@ -3,3 +3,7 @@
 <van-button type="info">信息按钮</van-button>
 <van-button type="warning">警告按钮</van-button>
 <van-button type="danger">危险按钮</van-button>
+
+<view>{{numA}}+{{numB}} = {{sum}}</view>
+<van-button type="primary" bindtap="btnHandler" data-step ="{{1}}">numA+1</van-button>
+<van-button type="danger" bindtap="btnHandler" data-step ="{{-1}}">numA-1</van-button>
