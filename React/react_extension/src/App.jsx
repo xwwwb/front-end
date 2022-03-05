@@ -3,7 +3,7 @@ import Demo from './components/1_setState'
 export default class App extends Component {
   render() {
     return (
-     <Demo />
+     <Demo demo={101} />
     )
   }
 }
