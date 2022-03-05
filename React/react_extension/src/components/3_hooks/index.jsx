@@ -30,6 +30,9 @@ function Demo2() {
 		// setCount(count=> count + 1)
     setName(name=>'xwwwb')
 	}
+	React.useEffect(()=>{
+		console.log("@")
+	})
 	return (
 		<div>
 			<h1>当前求和为{count}</h1>
