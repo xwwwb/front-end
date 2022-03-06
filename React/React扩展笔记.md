@@ -30,6 +30,21 @@ https://zh-hans.reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-a
 
 # 3. Hooks
 
+#### 1. React Hook/Hooks是什么?
+
+```
+Hook是React 16.8.0版本增加的新特性/新语法
+可以让你在函数组件中使用 state 以及其他的 React 特性
+```
+
+#### 2. 三个常用的Hook
+
+```
+State Hook: React.useState()
+Effect Hook: React.useEffect()
+Ref Hook: React.useRef()
+```
+
 #### 3. State Hook
 
 ```
@@ -43,4 +58,33 @@ setXxx()2种写法:
         setXxx(value => newValue): 参数为函数, 接收原本的状态值, 返回新的状态值, 内部用其覆盖原来的状态值
 ```
 
-#### 
+#### 4. Effect Hook
+
+```
+Effect Hook 可以让你在函数组件中执行副作用操作(用于模拟类组件中的生命周期钩子)
+React中的副作用操作:
+        发ajax请求数据获取
+        设置订阅 / 启动定时器
+        手动更改真实DOM
+语法和说明: 
+        useEffect(() => { 
+          // 在此可以执行任何带副作用操作
+          return () => { // 在组件卸载前执行
+            // 在此做一些收尾工作, 比如清除定时器/取消订阅等
+          }
+        }, [stateValue]) // 如果指定的是[], 回调函数只会在第一次render()后执行
+    
+可以把 useEffect Hook 看做如下三个函数的组合
+        componentDidMount()
+        componentDidUpdate()
+    	componentWillUnmount() 
+```
+
+#### 5. Ref Hook
+
+```
+Ref Hook可以在函数组件中存储/查找组件内的标签或任意其它数据
+语法: const refContainer = useRef()
+作用:保存标签对象,功能与React.createRef()一样
+```
+
