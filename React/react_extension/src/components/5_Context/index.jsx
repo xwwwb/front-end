@@ -30,32 +30,34 @@ class B extends Component {
 	}
 }
 
-// class C extends Component {
-// 	// 声明一下
-// 	static contextType = UserNameContext
-// 	render() {
-// 		console.log(this)
-// 		return (
-// 			<div>
-// 				<div>我是C 组件</div>
-// 				<h4>我从A组件接收到的用户名是{this.context.username}{this.context.age}</h4>
-// 				<D/>
-// 			</div>
-// 		)
-// 	}
+class C extends Component {
+	// 声明一下
+	static contextType = UserNameContext
+	render() {
+		console.log(this)
+		return (
+			<div>
+				<div>我是C 组件</div>
+				<h4>
+					我从A组件接收到的用户名是{this.context.username}
+					{this.context.age}
+					<D/>
+				</h4>
+			</div>
+		)
+	}
+}
 
-function C() {
+function D() {
 	return (
 		<div>
-			<div>我是C 组件</div>
+			<div>我是D 组件</div>
 			<h4>
 				我从A组件接收到的用户名是
 				<UserNameContext.Consumer>
-					{
-						value=>{
-							return `${value.username},年龄是${value.age}`
-						}
-					}
+					{(value) => {
+						return `${value.username},年龄是${value.age}`
+					}}
 				</UserNameContext.Consumer>
 			</h4>
 		</div>
