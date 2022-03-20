@@ -24,11 +24,11 @@
         //若返回的promise为正确则result为正确且值为返回的promise的值
         //若返回的promise为错误则result为错误且值为返回的promise的值
         return new Promise((resolve,reject)=>{
-          // resolve('success')
-          reject('error')
+          resolve('success')
+          // reject('error')
         })
     },reason =>{
-      console.log(reason)
+      console.warn(reason)
     })
     console.log(result)
   </script>

@@ -14,20 +14,16 @@
 					// reject('Err')
 				}, 1000)
 			})
-			p.then((value) => {
-				// console.log(111)
-				throw "Err"
-			})
-				.then((value) => {
-					console.log(222)
-				})
-				.then((value) => {
-					console.log(333)
-				})
-				.catch((reason) => {
-					console.warn(reason)
-				})
-			//在最后面用catch接受异常就是异常穿透
+      let result = p.then(value=>{
+        console.log(111)
+        return new Promise(()=>{})
+      }).then(value=>{
+        console.log(222)
+      }).then(value=>{
+        console.log(333)
+      }).catch(reason=>{
+        console.warn(reason)
+      })
 		</script>
 	</body>
 </html>
