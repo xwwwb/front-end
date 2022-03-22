@@ -4,22 +4,31 @@ function Promise(executor) {
 	// 添加属性
 	this.PromiseState = "pending"
 	this.PromiseResult = null
+
+	// 声明属性
+	this.callbacks = []
 	// 保存实例对象的this值
 	const self = this
 	function resolve(data) {
 		// 判断状态
 		if (self.PromiseState !== "pending") return
-		console.log(this) // 这里为什么是window
+		// console.log(this) // 这里为什么是window
 		// 1.修改对象的状态(promiseState)
 		self.PromiseState = "fulfilled"
 		// 2.设置对象结果值(promiseResult)
 		self.PromiseResult = data
+		self.callbacks.forEach(item => {
+			item.onResolved(data)
+		})
 	}
 	function reject(data) {
 		if (self.PromiseState !== "pending") return
-		console.log(this) // 这里为什么是window
+		// console.log(this) // 这里为什么是window
 		self.PromiseState = "rejected"
 		self.PromiseResult = data
+		self.callbacks.forEach(item => {
+			item.onRejected(data)
+		})
 	}
 	try {
 		executor(resolve, reject)
@@ -39,7 +48,11 @@ Promise.prototype.then = function (onResolved, onRejected) {
 	// if (this.PromiseState === "pending") {
 	// 	console.log("这里不对 这里的promise实例包裹的异步任务 但是会先执行then")
 	// }
-	if(this.PromiseState === 'pending'){
-		
+	if (this.PromiseState === 'pending') {
+		// 保存回调函数
+		this.callbacks.push({
+			onRejected,
+			onResolved
+		})
 	}
 }

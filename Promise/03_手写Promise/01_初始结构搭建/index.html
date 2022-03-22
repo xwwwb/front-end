@@ -16,21 +16,32 @@
 			// resolve("OK")
 			// reject("error_1")
 			// throw "error_2"
-
+			// throw "error_3"
 			setTimeout(() => {
-				resolve("ok")
+				// resolve("ok")
+				reject("error_4")
+				// throw "error_3" // 这里无论是原生promise还是手写promise都不能用
 			}, 5000)
 		})
 
-		console.log(p)
+		// console.log(p)
 		p.then(
 			(value) => {
+				console.log("开始执行回调喽")
 				console.log(value)
+
 			},
 			(reason) => {
 				console.warn(reason)
 			}
 		)
+
+		p.then(value => {
+			alert(value)
+		}, reason => {
+			alert("reason: " + reason)
+		})
+		console.log(p)
 	</script>
 </body>
 
