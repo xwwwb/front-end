@@ -68,8 +68,12 @@ Promise.prototype.then = function (onResolved, onRejected) {
 		if (this.PromiseState === 'pending') {
 			// 保存回调函数
 			this.callbacks.push({
-				onRejected,
-				onResolved
+				onRejected: function () {
+					console.warn('error')
+				},
+				onResolved: function () {
+					console.log("success")
+				}
 			})
 		}
 	})
