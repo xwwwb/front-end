@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      resolve("ok")
+    })
+    p.then(value => {
+      console.log(value)
+      return Promise.reject("error")
+    }, reason => {
+      console.warn(reason)
+    }).then(value => {
+
+    }, reason => {
+      console.warn("这里应该是error:", reason)
+      return Promise.reject("error_2")
+
+    }).catch(reason => {
+      console.warn("这里应该是error_2:", reason)
+      return Promise.reject("error_3")
+    }).then(v => {
+
+    }, r => {
+      console.warn("这里应该是error_3", r)
+
+    }).then(v => {
+      console.warn("这里也会执行 因为链不会终止")
+    })
+
+    let p_2 = Promise.resolve("啊对对对")
+    let result = p_2.then(v => {
+      console.log(v)
+    })
+    console.log("这里输出result应该是undefined", result)
+
+    let p_3 = Promise.reject("啊错错错")
+    p_3.then(v => {
+      console.log(v)
+    }).then(v => {
+      console.log(v)
+    }).then(v => { },
+      // r => {} 这行不能存在 这行存在 就无法错误穿透到最下面的catch
+    ).catch(r => {
+      console.log(r)
+    })
+
+  </script>
+</body>
+
+</html>

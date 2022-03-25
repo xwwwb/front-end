@@ -33,7 +33,6 @@ function Promise(executor) {
 	try {
 		executor(resolve, reject)
 	} catch (e) {
-		console.log(e)
 		reject(e)
 	}
 }
@@ -42,7 +41,11 @@ function Promise(executor) {
 
 Promise.prototype.then = function (onResolved, onRejected) {
 	const self = this
-
+	if (typeof onRejected !== 'function') {
+		onRejected = reason => {
+			throw reason
+		}
+	}
 	return new Promise((resolve, reject) => {
 		function callback(type) {
 			// 好像不用写try catch 因为在上面的executor里面有try catch
@@ -85,4 +88,8 @@ Promise.prototype.then = function (onResolved, onRejected) {
 			})
 		}
 	})
+}
+
+Promise.prototype.catch = function (onRejected) {
+	return this.then(undefined, onRejected)
 }
