@@ -33,16 +33,20 @@ function Promise(executor) {
 	try {
 		executor(resolve, reject)
 	} catch (e) {
+		console.log(e)
 		reject(e)
 	}
 }
 
+// 之前是把callback写在了promise外 导致了resolve reject函数找不到 可是36行catch之后 输出的res的result是null而不是错误信息
+
 Promise.prototype.then = function (onResolved, onRejected) {
 	const self = this
-	// 有关下面this指向和try 有疑问 好像前两个不用try 第三个用
-	function callback(type) {
-		// 这里的try catch好像无意义 因为上面处理过异常了
-		try {
+
+	return new Promise((resolve, reject) => {
+		function callback(type) {
+			// 好像不用写try catch 因为在上面的executor里面有try catch
+			// try {
 			// 获取回调函数的执行结果
 			let result = type(self.PromiseResult)
 			// 判断 是否为promise
@@ -55,12 +59,11 @@ Promise.prototype.then = function (onResolved, onRejected) {
 			} else {
 				resolve(result)
 			}
-		} catch (e) {
-			reject(e)
+			// } catch (e) {
+			// 	reject(e)
+			// }
 		}
-	}
-	return new Promise((resolve, reject) => {
-		console.log("开始执行then了 then的this", this)
+		// console.log("开始执行then了 then的this", this)
 		if (this.PromiseState === "fulfilled") {
 			callback(onResolved)
 		}
