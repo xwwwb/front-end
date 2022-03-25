@@ -38,13 +38,13 @@ function Promise(executor) {
 }
 
 Promise.prototype.then = function (onResolved, onRejected) {
-	return new Promise((resolve, reject) => {
-		console.log("开始执行then了")
-		if (this.PromiseState === "fulfilled") {
-			// 这里的try catch好像无意义 因为上面处理过异常了
-			// try {
+	const self = this
+	// 有关下面this指向和try 有疑问 好像前两个不用try 第三个用
+	function callback(type) {
+		// 这里的try catch好像无意义 因为上面处理过异常了
+		try {
 			// 获取回调函数的执行结果
-			let result = onResolved(this.PromiseResult)
+			let result = type(self.PromiseResult)
 			// 判断 是否为promise
 			if (result instanceof Promise) {
 				result.then(v => {
@@ -55,12 +55,17 @@ Promise.prototype.then = function (onResolved, onRejected) {
 			} else {
 				resolve(result)
 			}
-			// } catch (e) {
-			// 	reject(e)
-			// }
+		} catch (e) {
+			reject(e)
+		}
+	}
+	return new Promise((resolve, reject) => {
+		console.log("开始执行then了 then的this", this)
+		if (this.PromiseState === "fulfilled") {
+			callback(onResolved)
 		}
 		if (this.PromiseState === "rejected") {
-			onRejected(this.PromiseResult)
+			callback(onRejected)
 		}
 		// if (this.PromiseState === "pending") {
 		// 	console.log("这里不对 这里的promise实例包裹的异步任务 但是会先执行then")
@@ -69,10 +74,10 @@ Promise.prototype.then = function (onResolved, onRejected) {
 			// 保存回调函数
 			this.callbacks.push({
 				onRejected: function () {
-					console.warn('error')
+					callback(onRejected)
 				},
 				onResolved: function () {
-					console.log("success")
+					callback(onResolved)
 				}
 			})
 		}

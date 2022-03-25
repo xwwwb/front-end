@@ -40,16 +40,16 @@
 
 		const res = p.then(value => {
 			console.log(value)
-			return 'hello promise'
-			// return new Promise((resolve, reject) => {
+			// return 'hello promise'
+			return new Promise((resolve, reject) => {
 			// resolve("success")
-			// reject("on no")
+			reject("on no")
 			// throw "fail"
-			// })
+			})
 		}, reason => {
 			console.warn(reason)
 		})
-		console.log(p)
+		// console.log(p)
 		console.log(res)
 	</script>
 </body>
