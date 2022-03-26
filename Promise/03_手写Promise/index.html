@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<script src="./promise.js"></script>
+</head>
+
+<body>
+	<script>
+		//#region
+		// let p = new Promise((resolve, reject) => {
+		// console.log("这里的this是", this)
+		// resolve("OK")
+		// reject("error_1")
+		// throw "error_2"
+		// throw "error_3"
+		// setTimeout(() => {
+		// resolve("ok")
+		// reject("error_4")
+		// throw "error_3" // 这里无论是原生promise还是手写promise都不能用
+		// }, 1000)
+		// })
+		//#endregion
+
+		//#region
+		// console.log(p)
+		// p.then(
+		// 	(value) => {
+		// 		console.log("开始执行回调喽")
+
+		// 		alert(value)
+		// 	},
+		// 	(reason) => {
+		// 		console.log("开始执行回调喽")
+
+		// 		alert("reason: " + reason)
+		// 	}
+		// )
+		//#endregion
+
+		//#region
+		// const res = p.then(value => {
+		// console.log(value)
+		// return 'hello promise'
+		// return new Promise((resolve, reject) => {
+		// resolve("success")
+		// reject("on no")
+		// throw "fail"
+		// })
+		// }, reason => {
+		// console.warn(reason)
+		// })
+		// console.log(p)
+		// console.log(res)
+		//#endregion
+
+		//#region
+		// const result = p.then(v => {
+		// 	throw 'ERROR'
+		// }
+		// ).then(v => { }
+		// ).then(v => { }
+		// ).catch(r => {
+		// 	console.log(r)
+		// })
+		//#endregion
+
+		//#region
+		// p.then()
+		// 	.then(value => {
+		// 		console.log(222)
+		// 	}).then(value => {
+		// 		console.log(333)
+		// 	}).catch(reason => {
+		// 		console.warn(reason)
+		// 	})
+		//#endregion
+
+		//#region
+		// const p = Promise.resolve('OK')
+		// const p_2 = Promise.resolve(new Promise((resolve, reject) => {
+		// 	// resolve("success")
+		// 	reject('error')
+		// }))
+		// const p_3 = Promise.resolve(Promise.resolve("这里是套娃"))
+		// console.log(p)
+		// console.log(p_2)
+		// console.log(p_3)
+		//#endregion
+
+		//#region
+		// const p = Promise.reject('error')
+		// const p_2 = Promise.reject(new Promise((resolve, reject) => {
+		// 	resolve('ok')
+		// }))
+		// console.log(p)
+		// console.log(p_2)
+		//#endregion
+
+		//#region
+		// let p1 = new Promise((resolve, reject) => {
+		// setTimeout(() => {
+		// resolve('ok')
+		// }, 10);
+		// })
+		// let p3 = Promise.reject("hi hi hi")
+		// let p2 = Promise.resolve('success')
+		// let p3 = Promise.resolve("hi hi hi")
+
+		// let result = Promise.race([p1, p3, p2])
+		// console.log(result)
+		//#endregion
+
+		let p1 = new Promise((resolve, reject) => {
+			// resolve("ok")
+			reject("error")
+			console.log(111)
+		})
+		p1.then(value => {
+			console.log(222)
+		}, r => {
+			console.log(444)
+		})
+		console.log(333)
+	</script>
+</body>
+
+</html>

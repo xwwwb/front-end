@@ -17,18 +17,22 @@ function Promise(executor) {
 		self.PromiseState = "fulfilled"
 		// 2.设置对象结果值(promiseResult)
 		self.PromiseResult = data
-		self.callbacks.forEach(item => {
-			item.onResolved(data)
-		})
+		setTimeout(() => {
+			self.callbacks.forEach(item => {
+				item.onResolved(data)
+			})
+		});
 	}
 	function reject(data) {
 		if (self.PromiseState !== "pending") return
 		// console.log(this) // 这里为什么是window
 		self.PromiseState = "rejected"
 		self.PromiseResult = data
-		self.callbacks.forEach(item => {
-			item.onRejected(data)
-		})
+		setTimeout(() => {
+			self.callbacks.forEach(item => {
+				item.onRejected(data)
+			})
+		});
 	}
 	try {
 		executor(resolve, reject)
@@ -45,6 +49,9 @@ Promise.prototype.then = function (onResolved, onRejected) {
 		onRejected = reason => {
 			throw reason
 		}
+	}
+	if (typeof onResolved !== 'function') {
+		onResolved = value => value
 	}
 	return new Promise((resolve, reject) => {
 		function callback(type) {
@@ -68,10 +75,14 @@ Promise.prototype.then = function (onResolved, onRejected) {
 		}
 		// console.log("开始执行then了 then的this", this)
 		if (this.PromiseState === "fulfilled") {
-			callback(onResolved)
+			setTimeout(() => {
+				callback(onResolved)
+			})
 		}
 		if (this.PromiseState === "rejected") {
-			callback(onRejected)
+			setTimeout(() => {
+				callback(onRejected)
+			});
 		}
 		// if (this.PromiseState === "pending") {
 		// 	console.log("这里不对 这里的promise实例包裹的异步任务 但是会先执行then")
@@ -92,4 +103,54 @@ Promise.prototype.then = function (onResolved, onRejected) {
 
 Promise.prototype.catch = function (onRejected) {
 	return this.then(undefined, onRejected)
+}
+
+Promise.resolve = function (value) {
+	return new Promise((resolve, reject) => {
+		if (value instanceof Promise) {
+			value.then(v => {
+				resolve(v)
+			}, r => {
+				reject(r)
+			})
+		} else {
+			resolve(value)
+		}
+	})
+}
+
+Promise.reject = function (value) {
+	return new Promise((resolve, reject) => {
+		reject(value)
+	})
+}
+
+Promise.all = function (promises) {
+	return new Promise((resolve, reject) => {
+		let count = 0;
+		let arr = []
+		for (let i = 0; i < promises.length; i++) {
+			promises[i].then(v => {
+				count++;
+				arr[i] = v
+				if (count === promises.length) {
+					resolve(arr);
+				}
+			}, r => {
+				reject(r)
+			})
+		}
+	})
+}
+
+Promise.race = function (promises) {
+	return new Promise((resolve, reject) => {
+		for (let i = 0; i < promises.length; i++) {
+			promises[i].then(v => {
+				resolve(v)
+			}, r => {
+				reject(r)
+			})
+		}
+	})
 }
