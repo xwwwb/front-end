@@ -102,30 +102,30 @@
 		//#endregion
 
 		//#region
-		// let p1 = new Promise((resolve, reject) => {
-		// setTimeout(() => {
-		// resolve('ok')
-		// }, 10);
-		// })
-		// let p3 = Promise.reject("hi hi hi")
-		// let p2 = Promise.resolve('success')
+		let p1 = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve('ok')
+			}, 10);
+		})
+		let p3 = Promise.reject("hi hi hi")
+		let p2 = Promise.resolve('success')
 		// let p3 = Promise.resolve("hi hi hi")
 
-		// let result = Promise.race([p1, p3, p2])
-		// console.log(result)
+		let result = Promise.all([p1, p3, p2])
+		console.log(result)
 		//#endregion
 
-		let p1 = new Promise((resolve, reject) => {
-			// resolve("ok")
-			reject("error")
-			console.log(111)
-		})
-		p1.then(value => {
-			console.log(222)
-		}, r => {
-			console.log(444)
-		})
-		console.log(333)
+		// let p1 = new Promise((resolve, reject) => {
+		// 	// resolve("ok")
+		// 	reject("error")
+		// 	console.log(111)
+		// })
+		// p1.then(value => {
+		// 	console.log(222)
+		// }, r => {
+		// 	console.log(444)
+		// })
+		// console.log(333)
 	</script>
 </body>
 
