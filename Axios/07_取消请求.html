@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.26.1/axios.min.js"></script> -->
+
+</head>
+
+<body>
+  <button>发送请求</button>
+  <button>取消请求</button>
+  <script>
+    const btns = document.querySelectorAll('button')
+    let cancel = null
+    const controller = new AbortController();
+    btns[0].addEventListener('click', () => {
+      if(cancel !== null){
+        cancel()
+      }
+      let r = axios({
+        method: 'GET',
+        url: 'http://localhost:3000/posts',
+        // 这个在0.22.0 不让用了
+        cancelToken: new axios.CancelToken((c) => {
+          cancel = c
+        }),
+        // 这个在0.22.0开始使用
+        // signal: controller.signal
+      })
+      console.log(r)
+      r.then(response => {
+        cancel = null
+        console.log(response)
+      }).catch(r => {
+        console.log(r)
+      })
+
+    })
+    btns[1].onclick = () => {
+      cancel("error")
+      // controller.abort()
+    }
+
+  </script>
+</body>
+
+</html
