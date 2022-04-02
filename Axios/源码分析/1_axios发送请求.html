@@ -6,12 +6,45 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./node_moduless/axios/dist/mine-axios.js"></script>
+  <!-- <script src="./node_moduless/axios/dist/mine-axios.js"></script> -->
 </head>
 
 <body>
   <script>
-    console.log(axios)
+    function Axios(config) {
+      // 初始化
+      this.defaults = config;
+      this.interceptors = {
+
+      }
+    }
+    // 原型添加相关的方法
+    Axios.prototype.request = function (config) {
+      console.log("发送请求，类型为", config.method)
+    }
+    Axios.prototype.get = function (config) {
+      return this.request({ method: 'GET' })
+    }
+    Axios.prototype.post = function (config) {
+      return this.request({ method: 'POST' })
+    }
+
+    function createInstance(config) {
+      let context = new Axios(config) //context.get() context.post() 但是不能当作函数使用context()
+      // 创建请求函数
+      let instance = Axios.prototype.request.bind(context) // instance是一个函数 并可以instance({}) 此时instance不能 instance.get ..
+      // 将 Axios.prototype 对象中的方法添加到instance函数对象中
+      Object.keys(Axios.prototype).forEach(key => {
+        instance[key] = Axios.prototype[key].bind(context)
+      })
+      // 为 instance函数对象添加属性default interceptor
+      Object.keys(context).forEach(key => {
+        instance[key] = context[key]
+      })
+      return instance
+    }
+    let axios = createInstance()
+    axios({ method: 'GET' })
   </script>
 </body>
 
