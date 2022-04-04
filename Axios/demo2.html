@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>请先启动json-server</h1>
+  <script>
+    axios('http://localhost:3000/posts/', {
+      method: 'get',
+    }).then(response => {
+      console.log("通过then方法获取axios的结果", response.data);
+    }).catch(error => {
+      console.log(error);
+    })
+
+    let fetchApiDataByAxios = async () => {
+      try {
+        let r = await axios.get('http://localhost:3000/posts/');
+        console.log("通过await方法加axios获得", r)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    fetchApiDataByAxios()
+
+    let fetchApiDataByFetchApi = () => {
+      let f = fetch('http://localhost:3000/posts/')
+      f.then(response => {
+        console.log("fetch得到的数据要用.json方法处理后才能用", response)
+        return response.json()
+      }).then(data => {
+        console.log("通过fetch获取的数据", data)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    fetchApiDataByFetchApi()
+
+    let fetchApiDataByFetchAndAsync = async () => {
+      let f = await fetch('http://localhost:3000/posts/')
+      console.log("通过fetch和await获得数据", f)
+      await f.json().then(data => {
+        console.log("通过fetch和await获得数据和json方法处理", data)
+      }).catch(error => {
+        console.log(error)
+      })
+
+    }
+    fetchApiDataByFetchAndAsync()
+  </script>
+</body>
+
+</html>
