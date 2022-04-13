@@ -10,6 +10,32 @@
 
 <body>
   探索一下await和.then一起用的情况
+  <script>
+    async function handleFetch() {
+      let p = await fetch('http://localhost:3000/posts').then(data => {
+        console.log("第一个then", data)
+        return data.json()
+      }
+      ).then(data => {
+        console.log("第二个fetch")
+        console.log(data)
+        return 'success'
+      }).catch(e => console.log(e))
+      // 这里的p是await返回的值 await返回一个promise
+      // 这里的p是success 如果没有22行的return p为undefined
+      console.log("fetch对象：", p)
+    }
+    async function handleFetch_2() {
+      let p = await fetch('http://localhost:3000/posts')
+      console.log(p)
+      // 这里的p已经不是promise了 是一个response
+      let p_2 = await p.json()
+      // 这里的p.json()返回的好像也是promise 所以要用await接着
+      console.log(p_2)
+    }
+    // handleFetch()
+    handleFetch_2()
+  </script>
 </body>
 
 </html>
