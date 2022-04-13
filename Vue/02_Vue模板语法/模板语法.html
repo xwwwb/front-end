@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,23 +8,27 @@
   <title>Document</title>
   <script src="../js/vue.js"></script>
 </head>
+
 <body>
-  <div id="root">  
+  <div id="root">
     <a v-bind:href="url">点我跳转</a>
     <a :href="url2">点我跳转</a>
+    错误写法：
+    <a href={{url2}}></a>
   </div>
   <script>
     Vue.config.productionTip = false;
 
     const vm = new Vue({
       // el: document.getElementById('root')
-      el:'#root', // 用于指定当前Vue实例为哪个容器服务 通常为CSS选择器字符串
-      data:{
-        name:'xwwwb',
-        url:'http://xwwwb.com',
-        url2:'http://dakadoc.xwwwb.com/'
+      el: '#root', // 用于指定当前Vue实例为哪个容器服务 通常为CSS选择器字符串
+      data: {
+        name: 'xwwwb',
+        url: 'http://xwwwb.com',
+        url2: 'http://dakadoc.xwwwb.com/'
       }
     })
   </script>
 </body>
+
 </html>
