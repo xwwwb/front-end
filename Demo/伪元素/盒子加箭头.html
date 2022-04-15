@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .box {
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 10px;
+    border: 6px solid lightskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: wheat
+  }
+
+  .box::after,
+  .box::before {
+    width: 0px;
+    height: 0px;
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    /* 不能先写 */
+    /* border-right-color: lightskyblue; */
+    border: solid transparent;
+  }
+
+  .box::after {
+    border-width: 30px;
+    border-left-color: lightblue;
+    margin-top: -30px;
+  }
+
+  .box::before {
+    border-width: 38px;
+    border-left-color: lightskyblue;
+    margin-top: -38px;
+  }
+</style>
+
+<body>
+
+  <div class="box">
+    向右箭头
+  </div>
+
+</body>
+
+</html>
