@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NavLink</title>
+  <style>
+    body {
+      height: 100%;
+      background-color: #0383cd;
+      overflow: hidden;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 20%;
+
+    }
+
+    nav a {
+      position: relative;
+      text-decoration: none;
+      margin: 0 30px;
+      color: white;
+    }
+
+    nav a::before,
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.2);
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav a::after {
+      height: 50px;
+      width: 50px;
+      border-width: 6px;
+      transform: translate(-50%, -50%) scale(0.2);
+    }
+
+    nav a:hover::before,
+    nav a:hover::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="">点赞</a>
+    <a href="">投币</a>
+    <a href="">转发</a>
+  </nav>
+</body>
+
+</html>

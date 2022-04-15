@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      font-size: 1.6em;
+      font-weight: 300;
+      line-height: 1.4;
+      max-width: 28em;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+      position: relative;
+    }
+
+    a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      top: 60%;
+      left: -0.1em;
+      right: -0.1em;
+      background-color: rgba(79, 192, 141, 0.5);
+      transition: top 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+      ;
+
+    }
+
+    a:hover::after {
+      top: 0
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main">
+    <p>
+      I am an independent software developer and the creator of the open source JavaScript framework <a href="">Vue.js</a>. Most of my work is open source and publicly available on <a href="">GitHub</a>. You can follow me on <a href="">Twitter</a> where I mostly tweet about Vue and frontend technologies.
+    </p>
+  </div>
+</body>
+
+</html>
