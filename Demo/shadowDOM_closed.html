@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <p>Light DOM</p>
+  </div>
+  <div id="host"></div>
+  <div style="color: red;" id="err"></div>
+  <script>
+    try {
+      const elem = document.querySelector('#host');
+
+      // attach a closed shadow root to #host
+      const shadowRoot = elem.attachShadow({ mode: 'closed' });
+
+      shadowRoot.innerHTML = `<p>Shadow DOM</p>`;
+
+      elem.shadowRoot.querySelector('p').innerText = 'Now nodes cannot be accessed from outside';
+      // => TypeError: Cannot read property 'querySelector' of null
+
+    } catch (e) {
+      console.dir(e)
+      document.querySelector('#err').innerText = "报错了，因为shadowDOM的模式是closed：" + e.message;
+    }
+  </script>
+
+
+</body>
+
+</html>
