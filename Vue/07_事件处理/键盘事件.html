@@ -12,10 +12,13 @@
 <body>
   <div id="root">
     <h1>欢迎{{name}}来学习</h1>
-    <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">    
+    <input type="text" placeholder="按下回车提示输入" @keyup="showInfo">
+    <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+    <input type="text" placeholder="按下回车提示输入" @keyup.13="showInfo">
     <input type="text" placeholder="按下回车提示输入" @keyup.huiche="showInfo">
-    <input type="text" placeholder="按下ctrl" @keyup.ctrl="showInfo">  
+    <input type="text" placeholder="按下ctrl" @keyup.ctrl="showInfo">
     <input type="text" placeholder="按下ctrl+y" @keyup.ctrl.y="showInfo">
+    tab这种会切换焦点 要配合 keydown 使用
   </div>
   <script>
     Vue.config.productionTip = false
@@ -28,6 +31,7 @@
       methods: {
         showInfo(e) {
           console.log(e.keyCode)
+          console.log(e.key)
           // if(e.keyCode !== 13) return //原生js写法
         }
 

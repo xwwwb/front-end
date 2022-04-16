@@ -61,6 +61,7 @@
     </div>
 
     <!-- 尝试去掉passive 会发现 滚动条的性能差距很大 -->
+    <!-- 先执行滚动 再执行回调 -->
     <ul @wheel.passive="scroll">
       <li>1</li>
       <li>2</li>
@@ -84,6 +85,7 @@
           alert("hello")
         },
         showInfo2(e) {
+          e.stopPropagation()
           alert("hello")
           console.log(e.target)
         },
