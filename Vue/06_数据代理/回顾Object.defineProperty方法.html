@@ -15,8 +15,14 @@
       name: '张三',
       sex: '男'
     }
+    let person_2 = {
+      name: '张三',
+      sex: '男',
+      age: 15
+    }
 
     // 用这种方法添加的 不可被枚举（遍历）
+    // 虽然麻烦 但是高级
     Object.defineProperty(person, 'age', {
       // value: 18,
       // enumerable: true, //控制属性是否可以枚举 默认false
@@ -27,7 +33,7 @@
       //   console.log("有人读取age属性了")
       //   return number;
       // }
-      get(){
+      get() {
         console.log("有人读取age属性了")
         return number;
       },
@@ -37,6 +43,8 @@
         number = value
       }
     })
+    console.log("defineProperty定义的属性不可枚举", Object.keys(person))
+    console.log(Object.keys(person_2))
     console.log(person)
   </script>
 </body>

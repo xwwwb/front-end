@@ -12,18 +12,24 @@
 <body>
   <div id="root">
     <h1>你好：{{name}}</h1>
+    <!-- 这里的插值语法可以插入vm身上的全部东西 -->
+    {{$options}}
+    <br>
+    {{$emit}}
   </div>
   <script>
     Vue.config.productionTip = false;
-    // 这里用vm作实例对象是因为 viewmod 
+    // 这里用vm作实例对象是因为 viewmod
+    // M model V view VM viewmodel 
     const vm = new Vue({
-      data(){
+      data() {
         return {
-          name:"xwwwb"
+          name: "xwwwb"
         }
       }
     })
     vm.$mount("#root")
+    console.log(vm)
   </script>
 </body>
 

@@ -16,9 +16,10 @@
   <script>
     Vue.config.productionTip = false;
     const vm = new Vue({
-      data(){
+      data() {
+        console.log('@@@', this)  // 此处的thie是vue实例对象
         return {
-          name:"xwwwb"
+          name: "xwwwb"
         }
       }
     })
