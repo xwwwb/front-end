@@ -14,10 +14,8 @@
     <h1>欢迎{{name}}来学习</h1>
     姓：<input type="text" v-model="firstName"> <br>
     名：<input type="text" v-model="lastName"><br>
-    名：<input type="text" v-model="x"><br>
     全名：{{fullName}}
-    <br>
-    get不会频繁调用
+
   </div>
   <script>
     Vue.config.productionTip = false
@@ -30,20 +28,23 @@
         x: 'x'
       },
       computed: {
-        fullName: {
-          // get有什么作用 当有人读取fullName时 get就会被调用 且返回值就作为fullName的值
-          // fullName 的getter会被调用，返回值会被设置为当前实例的属性值
-          get() {
-            console.log("调用get了")
-            return this.firstName + "-" + this.lastName
-          },
-          // fullName被修改时会被调用
-          set(value) {
-            console.log("调用set了")
-            const names = value.split("-")
-            this.firstName = names[0]
-            this.lastName = names[1]
-          }
+
+        // 完整写法
+        // fullName: {
+        //   get() {
+        //     return this.firstName + "-" + this.lastName
+        //   },
+        //   set(value) {
+        //     const names = value.split("-")
+        //     this.firstName = names[0]
+        //     this.lastName = names[1]
+        //   }
+        // }
+
+        // 简写
+        // 只考虑读取不考虑修改的时候用简写形式
+        fullName() {
+          return this.firstName + "-" + this.lastName
         }
       }
     })

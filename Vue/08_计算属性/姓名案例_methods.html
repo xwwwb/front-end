@@ -14,8 +14,10 @@
     <h1>欢迎{{name}}来学习</h1>
     姓：<input type="text" v-model="firstName"> <br>
     名：<input type="text" v-model="lastName"><br>
+    名：<input type="text" v-model="xs"><br>
     全名：{{fullName()}}
-
+    <br>
+    methods会频繁调用
   </div>
   <script>
     Vue.config.productionTip = false
@@ -23,14 +25,15 @@
       el: "#root",
       data: {
         name: "xwwwb",
-        firstName:"张",
-        lastName:"三"
+        firstName: "张",
+        lastName: "三",
+        xs: 's'
       },
       methods: {
-        fullName(){
+        fullName() {
           console.log("@---fullName") // fullName会频繁调用
-          return this.firstName+"-"+this.lastName
-        } 
+          return this.firstName + "-" + this.lastName
+        }
       }
     })
   </script>
