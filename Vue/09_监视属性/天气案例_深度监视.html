@@ -13,8 +13,11 @@
   <div id="root">
     <h3>今天天气很{{info}},{{x}}</h3>
     <button @click="changeWeather">切换天气</button>
-    <button @click="isHot = !isHot;x++">切换天气</button>
-    <button @click="window.alert(1)">切换天气</button>
+    <hr>
+    <h3>a的值是{{numbers.a}}</h3>
+    <button @click="numbers.a++">点我a加一</button>
+    <button @click="numbers.b++">点我b加一</button>
+    <button @click="numbers = {a:666,b:888}">彻底替换掉numbers</button>
   </div>
   <script>
     Vue.config.productionTip = false
@@ -23,7 +26,11 @@
       data: {
         isHot: true,
         x: 0,
-        window
+        window,
+        numbers: {
+          a: 1,
+          b: 1
+        }
       },
       computed: {
         info() {
@@ -38,15 +45,29 @@
         }
       },
       watch: {
+
         isHot: {
           // immediate: true, // 初始化时让handler调用一下
           // 当ishot发生改变时 调用
           handler(newValue, oldValue) {
             console.log('isHot被修改了', newValue, oldValue)
           }
+        },
+        'numbers.a': {
+          handler(newValue, oldValue) {
+            console.log('numbers.a被修改了', newValue, oldValue)
+          }
+        },
+        // 监视多集结构中所有属性的变化  
+        numbers: {
+          // deep: true, 
+          // 在控制台执行 vm.numbers.b= 111 如果不加deep:true 那么无法监视
+          // 就是说vue是默认可以多级监控的 但是如果不开这个deep:true 那么就不会给程序员展示出来
+          handler(newValue, oldValue) {
+            console.log('numbers被修改了', newValue, oldValue)
+          }
         }
       }
-
     })
 
     // 这里监视的如果是空的 那么 newValue和oldValue都是undefined
