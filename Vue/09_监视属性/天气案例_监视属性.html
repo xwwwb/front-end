@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h3>今天天气很{{info}},{{x}}</h3>
+    <button @click="changeWeather">切换天气</button>
+    <button @click="isHot = !isHot;x++">切换天气</button>
+    <button @click="window.alert(1)">切换天气</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        isHot: true,
+        x: 0,
+        window
+      },
+      computed: {
+        info() {
+          return this.isHot ? '热' : '冷'
+        }
+      },
+      methods: {
+        changeWeather() {
+          this.isHot = !this.isHot
+          this.x = this.x + 1
+          console.log(this)
+        }
+      },
+      watch: {
+        isHot: {
+          immediate: true, // 初始化时让handler调用一下
+          // 当ishot发生改变时 调用
+          handler(newValue, oldValue) {
+            console.log('isHot被修改了', newValue, oldValue)
+          }
+        }
+      }
+    })
+
+    // 这里监视的如果是空的 那么 newValue和oldValue都是undefined
+    vm.$watch('isHot', {
+      handler() {
+        console.log("写在vm上的属性监视")
+      }
+    })
+  </script>
+</body>
+
+</html>
