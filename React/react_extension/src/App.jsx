@@ -21,8 +21,8 @@ export default class App extends Component {
     //    return(
     //   <Demo5></Demo5>
     // )
-           return(
+    return (
       <Demo6></Demo6>
     )
-}
+  }
 }

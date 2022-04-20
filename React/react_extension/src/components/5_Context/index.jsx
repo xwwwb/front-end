@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+// 因为这个名字要作为标签 所以首字母大写
 const UserNameContext = React.createContext()
 
 export default class A extends Component {
@@ -19,7 +20,9 @@ export default class A extends Component {
 	}
 }
 class B extends Component {
+	static contextType = UserNameContext
 	render() {
+		console.log(this)
 		return (
 			<div>
 				<div>我是B组件</div>
@@ -31,7 +34,7 @@ class B extends Component {
 }
 
 class C extends Component {
-	// 声明一下
+	// 声明一下 不声明 他是空对象
 	static contextType = UserNameContext
 	render() {
 		console.log(this)
@@ -41,7 +44,7 @@ class C extends Component {
 				<h4>
 					我从A组件接收到的用户名是{this.context.username}
 					{this.context.age}
-					<D/>
+					<D />
 				</h4>
 			</div>
 		)
@@ -49,6 +52,7 @@ class C extends Component {
 }
 
 function D() {
+
 	return (
 		<div>
 			<div>我是D 组件</div>
