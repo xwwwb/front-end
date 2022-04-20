@@ -8,6 +8,17 @@ export default class Parent extends Component {
       carName: '宝马'
     })
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('nextProps', nextProps, 'nextState', nextState)
+    console.log('目前的state', this.state, '目前的props', this.props)
+    console.log("用===比较", this.state === nextState, '用==比较', this.state == nextState, '都为false 这里要写上属性名字 xxx.carName这种')
+    if (this.state.carName !== nextState.carName) {
+      return true
+    } else {
+      return false
+    }
+  }
   render() {
     console.log('parent--render')
     return (
