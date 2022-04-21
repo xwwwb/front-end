@@ -5,6 +5,7 @@ import Demo3 from './components/3_hooks'
 import Demo4 from './components/4_Fragment'
 import Demo5 from './components/5_Context'
 import Demo6 from './components/6_optimize'
+import Demo7 from './components/7_renderProps'
 import { BrowserRouter } from 'react-router-dom'
 
 export default class App extends Component {
@@ -22,7 +23,7 @@ export default class App extends Component {
     //   <Demo5></Demo5>
     // )
     return (
-      <Demo6></Demo6>
+      <Demo7></Demo7>
     )
   }
 }
