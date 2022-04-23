@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <span>script start</span>
+  <br>
+  <span>promise1</span>
+  <br>
+  <span>script end</span>
+  <br>
+  <span>then1</span>
+  <br>
+  <span>timeout1</span>
+  <br>
+  <span>timeout2</span>
+  <script>
+    console.log("script start");
+
+    setTimeout(function () {
+      console.log("timeout1");
+    }, 10);
+
+    new Promise((resolve) => {
+      console.log("promise1");
+      resolve();
+      setTimeout(() => console.log("timeout2"), 10);
+    }).then(function () {
+      console.log("then1");
+    });
+
+    console.log("script end");
+  </script>
+</body>
+
+</html>

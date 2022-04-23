@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <span>任务队列的执行过程是：先执行一个宏任务，执行过程中如果产出新的宏/微任务，就将他们推入相应的任务队列，之后在执行一队微任务，之后再执行宏任务，如此循环。以上不断重复的过程就叫做 Event Loop(事件循环)。</span>
+  <br>
+  <span>宏任务主要包括 script（js整体代码） setTimeout setInterval setImmediate I/0 UI交互</span>
+  <br>
+  <span>微任务主要包括 Promise process.nextTick(Node.js) MutaionObserver</span>
+  <script>
+    console.log("script start");
+    setTimeout(() => {
+      console.log("setTimeout");
+    }, 0);
+    Promise.resolve().then(() => {
+      console.log("promise1");
+    }).then(() => {
+      console.log("promise2");
+    })
+    let a = 2;
+    a = 3;
+    //冒泡排序 
+    function bubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+    console.log(bubbleSort([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    console.log("script end");
+  </script>
+</body>
+
+</html>
