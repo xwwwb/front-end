@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>
+    hhh
+  </h1>
+  <script>
+    const s = new Date().getSeconds();
+    console.log("script start");
+    new Promise((resolve) => {
+      console.log("promise");
+      resolve();
+    }).then(() => {
+      console.log("then1");
+      // while true会堵塞页面
+      while (true) {
+        if (new Date().getSeconds() - s >= 4) {
+          console.log("while");
+          break;
+        }
+      }
+    });
+
+    //setTimeout() 的第二个参数是为了告诉 JavaScript 再过多长时间把当前任务添加到队列中。
+    //如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。 
+    setTimeout(() => {
+      console.log("timeout");
+    }, 2000);
+    console.log("script end");
+  </script>
+</body>
+
+</html>
