@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  第三个参数是回调函数的参数
+
+  若为函数 先执行
+  <script>
+
+    setTimeout(
+      function (props) {
+        console.log(props) //第三个参数是作为回调函数的参数来使用的
+      },
+      2000,
+      '第三个参数是作为回调函数的参数来使用的'
+    )
+
+
+    setTimeout(
+      function () {
+        console.log('外层函数')
+      },
+      2000,
+      setTimeout(
+        function () {
+          console.log('内层函数')
+        }, 0)
+    )
+  </script>
+</body>
+
+</html>

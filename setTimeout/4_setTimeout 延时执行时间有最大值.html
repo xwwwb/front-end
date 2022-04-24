@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  Chrome、Safari 和 Firefox 浏览器都是以 32 个 bit 来存储延时值的，32bit 最大只能存放的数字是 2147483647，换算一下相当于 24.8天。那么这就意味着 setTimeout 设置的延迟值大于 2147483647 毫秒就会溢出。
+  <br>
+  会立即执行
+  <script>
+
+    function fn() {
+      setTimeout(() => {
+        console.log('go')
+      }, 2147483648)
+    }
+    fn()
+  </script>
+</body>
+
+</html>

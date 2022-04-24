@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.log(i)                          // 输出顺序一 undefined
+    for (var i = 0; i < 3; i++) {
+      console.log(i);                     // 输出顺序二 0,1,2
+      setTimeout(() => console.log(i), 1);    // 输出顺序六 3,3,3
+    }
+
+    console.log(i)                          // 输出顺序三 3
+
+    for (let i = 0; i < 3; i++) {
+      console.log(i);                     // 输出顺序四 0,1,2
+      setTimeout(() => console.log(i), 1);    // 输出顺序七 0,1,2
+    }
+    console.log(i)
+
+
+  </script>
+</body>
+
+</html>
