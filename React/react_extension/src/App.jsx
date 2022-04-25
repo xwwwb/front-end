@@ -6,24 +6,18 @@ import Demo4 from './components/4_Fragment'
 import Demo5 from './components/5_Context'
 import Demo6 from './components/6_optimize'
 import Demo7 from './components/7_renderProps'
+import Demo8 from './components/8_ErrorBoundary/Parent'
 import { BrowserRouter } from 'react-router-dom'
 
 export default class App extends Component {
   render() {
-    // return (
-    //   <Demo demo={101}/>
-    // )
-    // return(
-    //   <Demo3>xxx</Demo3>
-    // )
-    // return(
-    //   <Demo4></Demo4>
-    // )
-    //    return(
-    //   <Demo5></Demo5>
-    // )
+
     return (
-      <Demo7></Demo7>
+      <>
+        {/* <Demo></Demo> */}
+        {/* <Demo7></Demo7> */}
+        <Demo8 />
+      </>
     )
   }
 }

@@ -7,3 +7,7 @@
 <view>{{numA}}+{{numB}} = {{sum}}</view>
 <van-button type="primary" bindtap="btnHandler" data-step ="{{1}}">numA+1</van-button>
 <van-button type="danger" bindtap="btnHandler" data-step ="{{-1}}">numA-1</van-button>
+
+<van-button type="danger" bindtap="showToast">展示toast</van-button>
+
+<van-toast id="van-toast" />

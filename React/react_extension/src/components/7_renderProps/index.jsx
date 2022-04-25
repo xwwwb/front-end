@@ -5,19 +5,24 @@ export default class Parent extends Component {
     return (
       <div className='parent'>
         <h3>我是parent组件</h3>
-        <A />
+        {/* <A>Hello</A> */}
+        <A render={(name) => <B name={name} />} />
       </div>
     )
   }
 }
 
 class A extends Component {
+  state = { name: 'tom' }
   render() {
+    console.log(this.props)
     return (
       <div className='child'>
         <h3 >我是A组件
         </h3>
-        <B />
+
+        {this.props.render(this.state.name)}
+
       </div>
     )
   }
@@ -28,6 +33,7 @@ class B extends Component {
     return (
       <div className='child_2'>
         <h3>我是B组件</h3>
+        {this.props.name}
       </div>
     )
   }

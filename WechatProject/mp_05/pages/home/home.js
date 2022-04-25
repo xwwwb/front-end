@@ -4,6 +4,8 @@ import {
 import {
   store
 } from '../../store/store'
+
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**
@@ -12,7 +14,9 @@ Page({
   data: {
       haha:1
   },
-
+  showToast(){
+    Toast('我是提示文案，建议不超过十五字~');
+  },
   btnHandler(e) {
     console.log(e)
     this.updateNum1(e.target.dataset.step)
