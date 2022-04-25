@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .root {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .box {
+      height: 300px;
+      width: 500px;
+      background-color: lightgreen;
+      padding: 10px;
+      font-size: 20px;
+      box-sizing: border-box;
+      transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+      color: gray;
+    }
+
+    .multi-shadow {
+      box-shadow:
+        0 0 0 2em #f4aab9,
+        0 0 0 4em #66CCFF,
+        0 0 0 6em lightcoral;
+    }
+
+    .smooth-shadow {
+      box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07);
+
+    }
+
+    .btn {
+      width: 300px;
+      margin-top: 140px;
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .btn>div:nth-child(1) {
+      height: 30px;
+      width: 80px;
+      background-color: #66CCFF;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .btn>div:nth-child(2) {
+      height: 30px;
+      width: 80px;
+      background-color: #f4aab9;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="root">
+    <div class="box multi-shadow">
+      <span> 当 x-offset, y-offset, 和 blur 都是0, 盒阴影将是一个四边都是一样长度的带有颜色的outline. 当设置了多个阴影时，阴影绘制由最后一个开始， 故第一个设置的阴影将覆盖在后设置的阴影之上. 当border-radius设置为0时（也是其默认值）, 阴影的四角将没有弧度. 当我们设置了border-radius为其他不为0的值时，阴影的四角也随之形成弧度。https://shadows.brumm.af/</span>
+    </div>
+    <div class="btn">
+      <div>多边框</div>
+      <div>平滑边框</div>
+    </div>
+  </div>
+  <script>
+    let btn_1 = document.querySelector('.btn>div:nth-child(1)')
+    let btn_2 = document.querySelector('.btn>div:nth-child(2)')
+    btn_1.addEventListener('click', function () {
+      document.querySelector('.box').classList.add('multi-shadow')
+      document.querySelector('.box').classList.remove('smooth-shadow')
+
+    })
+    btn_2.addEventListener('click', function () {
+      document.querySelector('.box').classList.add('smooth-shadow')
+      document.querySelector('.box').classList.remove('multi-shadow')
+    })
+  </script>
+</body>
+
+</html>
