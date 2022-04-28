@@ -16,7 +16,7 @@ export default function App() {
           <div className="list-group">
             {/* 实现活动态的高亮 */}
             <NavLink className="list-group-item" to="/about">About</NavLink>
-            <NavLink className="list-group-item" to="/home">Home</NavLink>
+            <NavLink className="list-group-item" end to="/home">Home</NavLink>
           </div>
         </div>
         <div className="col-xs-6">
