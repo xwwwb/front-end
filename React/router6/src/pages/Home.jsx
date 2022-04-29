@@ -11,7 +11,7 @@ export default function Home() {
             <NavLink className="list-group-item" to="news">News</NavLink>
           </li>
           <li>
-            <NavLink className="list-group-item" to="messages">Message</NavLink>
+            <NavLink className="list-group-item" to="messages">Messages</NavLink>
           </li>
         </ul>
         {/* 指定路由组件的呈现位置 */}
