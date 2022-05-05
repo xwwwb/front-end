@@ -36,6 +36,8 @@ class Login extends React.Component{
 		password:''
 	}
 	//第35集内容
+	//创建了一个闭包
+	//函数工厂
 	saveFormData=(dataType)=>{
 		return(event)=>{
 			this.setState({[dataType]:event.target.value})
