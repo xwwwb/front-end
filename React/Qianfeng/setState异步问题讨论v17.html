@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>列表渲染</title>
+	<script src="../react_basic/js/react.development.js"></script>
+	<script src="../react_basic/js/react-dom.development.js"></script>
+	<script src="../react_basic/js/babel.min.js"></script>
+</head>
+
+<body>
+
+	<div id="root"></div>
+	<script type="text/babel">
+		class App extends React.Component {
+			state = {
+				count: 1
+			}
+			render() {
+				console.log("render")
+				return (
+					<div>
+						{this.state.count}
+						<button onClick={this.handleAdd1}>add1</button>
+						<button onClick={this.handleAdd2}>add2</button>
+					</div>
+				)
+			}
+
+			handleAdd1 = () => {
+				this.setState({
+					count: this.state.count + 1
+				}, () => {
+					console.log(this.state.count)
+				})
+
+
+
+				this.setState({
+					count: this.state.count + 1
+				}, () => {
+					console.log(this.state.count)
+				})
+
+
+
+				this.setState({
+					count: this.state.count + 1
+				}, () => {
+					console.log(this.state.count)
+					// 状态 和真实dom已经更新完了，
+				})
+
+
+			}
+
+			handleAdd2 = () => {
+				setTimeout(() => {
+					this.setState({
+						count: this.state.count + 1
+					})
+
+					console.log(this.state.count)
+
+					this.setState({
+						count: this.state.count + 1
+					})
+
+					console.log(this.state.count)
+
+					this.setState({
+						count: this.state.count + 1
+					})
+
+					console.log(this.state.count)
+				}, 0)
+
+			}
+		}
+		ReactDOM.render(<App />, document.getElementById("root"))
+	</script>
+</body>
+
+</html>
