@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .box>div {
+      width: 100px;
+      height: 40px;
+      border: 1px solid red;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <div>使用闭包</div>
+    <div class="content_1"></div>
+    <div class="content_1"></div>
+    <div class="content_1"></div>
+  </div>
+
+  <div class="box">
+    <div>使用let</div>
+    <div class="content_2"></div>
+    <div class="content_2"></div>
+    <div class="content_2"></div>
+  </div>
+
+  <script>
+    let nodes_1 = document.getElementsByClassName('content_1');
+    for (var i = 0; i < nodes_1.length; i++) {
+      nodes_1[i].onclick =
+        function () {
+          var item = i
+          return function () {
+            nodes_1[item].style.background = "red"
+          }
+        }()
+    }
+
+
+    let nodes_2 = document.getElementsByClassName('content_2');
+    for (let i = 0; i < nodes_2.length; i++) {
+      nodes_2[i].onclick = function () {
+        nodes_2[i].style.background = "red"
+      }
+    }
+  </script>
+</body>
+
+</html>

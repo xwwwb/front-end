@@ -6,7 +6,7 @@ class Index extends Component {
 		return <div>index</div>
 	}
 }
-// 这是什么写法
+// 这是什么写法 会出现在constructor中
 Index.propTypes = {
 	a: PropTypes.string.isRequired,
 }
