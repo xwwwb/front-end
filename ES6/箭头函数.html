@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  这里要扩展一下 就是对象中的箭头函数的this永远和最外层的对象所处的环境保持一致 不论套了多少层
+  <script>
+    let obj = {
+      name: "xwwwb",
+      getName: function () {
+        console.log(this)
+      },
+      getName_1: () => {
+
+        console.log("这里还是window", this)
+      }
+    }
+
+
+    obj.getName()
+    obj.getName_1()
+  </script>
+</body>
+
+</html>
