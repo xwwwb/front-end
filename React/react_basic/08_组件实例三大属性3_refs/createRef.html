@@ -2,46 +2,47 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-	<script src="../js/react.development.js"></script>
-	<script src="../js/react-dom.development.js"></script>
-	<script src="../js/babel.min.js"></script>
-	<!-- 引入prop-types 用于对组件标签属性进行限制 -->
-	<script src="../js/prop-types.js"></script>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../js/react.development.js"></script>
+  <script src="../js/react-dom.development.js"></script>
+  <script src="../js/babel.min.js"></script>
+  <!-- 引入prop-types 用于对组件标签属性进行限制 -->
+  <script src="../js/prop-types.js"></script>
 </head>
 
 <body>
-<div id="root"></div>
-<script type="text/babel">
-class Dome extends React.Component{
-  /*
-  React.createRef调用后可以返回一个容器 该容器可以储存被ref所标识的节点
-  该容器是专人专用
-  用几个创建几个
-  这个形式是目前react最推荐的形式
-  */
-  myRef=React.createRef()
-  showData=()=>{
-   const {value}=this.myRef.current
-   alert(value)
-  }
-  showData2=()=>{
-    const {input2}=this
-    alert(input2.value)
-  }
-  render(){
-    return (
-      <div>
-        <input ref={this.myRef} type="text" placeholder="点击按钮提示数据"/>&nbsp;
-        <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
-      
-        </div>
-    )
-  }
-}
-ReactDOM.render(<Dome/>,document.getElementById('root'))
-</script>
+  <div id="root"></div>
+  <script type="text/babel">
+    class Dome extends React.Component {
+      /*
+      React.createRef调用后可以返回一个容器 该容器可以储存被ref所标识的节点
+      该容器是专人专用
+      用几个创建几个
+      这个形式是目前react最推荐的形式
+      */
+      myRef = React.createRef()
+      showData = () => {
+        const { value } = this.myRef.current
+        alert(value)
+      }
+      showData2 = () => {
+        const { input2 } = this
+        alert(input2.value)
+      }
+      render() {
+        console.log(this)
+        return (
+          <div>
+            <input ref={this.myRef} type="text" placeholder="点击按钮提示数据" />&nbsp;
+            <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Dome />, document.getElementById('root'))
+  </script>
 </body>
 
 </html>
