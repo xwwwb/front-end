@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../react_basic/js/react.development.js"></script>
+  <script src="../react_basic/js/react-dom.development.js"></script>
+  <script src="../react_basic/js/babel.min.js"></script>
+  <script src="vue.min.js"></script>
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 80px;
+      margin: 10px;
+      padding-left: 10px;
+    }
+
+    div:nth-child(1) {
+      background-color: #1E2127;
+      line-height: 80px;
+      color: bisque;
+    }
+
+    div:nth-child(2) {
+      background-color: #3ACC7F;
+      line-height: 80px;
+      color: #192736;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="app">
+    <h1>{{message}}</h1>
+  </div>
+  <script type="text/babel">
+    function App() {
+      return (
+        <h1>This is React!</h1>
+      )
+    }
+    ReactDOM.render(<App />, document.getElementById("root"))
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'This is Vue!'
+      }
+    })
+  </script>
+</body>
+
+</html>
