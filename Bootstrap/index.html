@@ -5,11 +5,25 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<link rel="stylesheet" href="./dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/bootstrap.css" />
 	</head>
+	<style>
+		[class*="col"] {
+			padding: 1rem;
+			background-color: #33b5e5;
+			border: 2px solid #fff;
+			color: #fff;
+		}
+	</style>
 	<body>
-		<h1>Hello World</h1>
-		<script src="./jquery-3.6.0.js"></script>
-		<script src="./dist/js/bootstrap.min.js"></script>
+		<div class="container border">
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-12">xxx</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">xxx</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">xxx</div>
+				<div class="col-md-4 col-sm-6 col-xs-12">xxx</div>
+			</div>
+		</div>
+		<script src="js/bootstrap.js"></script>
 	</body>
 </html>

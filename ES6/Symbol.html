@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let s = Symbol()
+			let s2 = Symbol("xwwwb")
+			let s3 = Symbol("xwwwb")
+			let s4 = Symbol.for("xwwwb")
+			console.log("打印一下s4", s4, typeof s4)
+			console.log("对比s2和s3", s2 === s3)
+			let s5 = Symbol.for("xwwwb")
+			console.log("对比一下s4和s5", s4 === s5)
+			document.getElementsByTagName("body")[0].innerHTML = "Symbol不能和其他数据进行运算"
+
+			let obj = {
+				name: "xwwwb",
+				up: function () {
+					console.log("嗨嗨嗨")
+				},
+				down: function () {
+					console.log("嗨嗨嗨")
+				},
+			}
+			let methods = {
+				up: Symbol(),
+				down: Symbol(),
+			}
+			obj[methods.up] = function () {
+				console.log("up")
+			}
+			obj[methods.down] = function () {
+				console.log("down")
+			}
+			console.log(obj)
+			obj.up()
+			obj.down()
+			obj[methods.up]()
+			obj[methods.down]()
+		</script>
+	</body>
+</html>
