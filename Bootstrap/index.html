@@ -14,6 +14,9 @@
 			border: 2px solid #fff;
 			color: #fff;
 		}
+		[class*="align-items"] {
+			height: 160px;
+		}
 	</style>
 	<body>
 		<div class="container border">
@@ -28,10 +31,95 @@
 				<div class="col-2">x</div>
 				<div class="col-2">x</div>
 				<div class="col-4">x</div>
-				<div class="col">x</div>
+				<div class="col-8">x</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+				<div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12</div>
+			</div>
+
+			<div class="row align-items-start" style="background-color: lightpink">
+				<div class="col">One of three columns</div>
+				<div class="col">One of three columns</div>
+				<div class="col">One of three columns</div>
+			</div>
+
+			<div class="row align-items-center" style="background-color: lightblue">
+				<div class="col">One of three columns</div>
+				<div class="col">One of three columns</div>
+				<div class="col">One of three columns</div>
+			</div>
+
+			<div class="row align-items-end" style="background-color: lightgreen">
+				<div class="col">One of three columns</div>
+				<div class="col">One of three columns</div>
+				<div class="col">One of three columns</div>
+			</div>
+
+			<div class="row" style="height: 180px">
+				<div class="col align-self-start">One of three columns</div>
+				<div class="col align-self-center">One of three columns</div>
+				<div class="col align-self-end">One of three columns</div>
+			</div>
+
+			gutters 存在疑惑
+			<div class="row gx-4 gy-4">
+				<div class="col-3">x</div>
+				<div class="col-3">x</div>
+				<div class="col-3">x</div>
+				<div class="col-6">x</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<div class="card text-bg-primary mb-3" style="max-width: 18rem">
+						<div class="card-header">Header</div>
+						<div class="card-body">
+							<h5 class="card-title">Primary card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card text-bg-primary mb-3" style="max-width: 18rem">
+						<div class="card-header">Header</div>
+						<div class="card-body">
+							<h5 class="card-title">Primary card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card text-bg-primary mb-3" style="max-width: 18rem">
+						<div class="card-header">Header</div>
+						<div class="card-body">
+							<h5 class="card-title">Primary card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card text-bg-primary mb-3" style="max-width: 18rem">
+						<div class="card-header">Header</div>
+						<div class="card-body">
+							<h5 class="card-title">Primary card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<script src="js/bootstrap.js"></script>
 	</body>
 </html>
-
