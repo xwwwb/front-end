@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.slim.min.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+		</style>
+		<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
+	</head>
+	<body>
+		<!-- <script>
+			$(document).ready(function () {
+				$("div").hide()
+			})
+		</script> -->
+		<p>load事件是指等页面文档外部js文件css文件图片加载完才执行内部代码</p>
+		<p>DOMContentLoaded是当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完全加载。</p>
+		<script>
+			$(function () {
+				$("div").hide()
+			})
+		</script>
+		<div></div>
+	</body>
 </html>
