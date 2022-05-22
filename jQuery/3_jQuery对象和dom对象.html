@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/jquery/3.6.0/jquery.min.js" type="application/javascript"></script>
+	</head>
+	<body>
+		<div></div>
+		<script>
+			let myDiv = document.querySelector("div") // 原生dom对象
+			console.dir(myDiv)
+			$("div") // 这是一个jquery 对象
+			// jquery用$对dom对象包装后产生的对象 以伪数组形式储存
+			console.dir($("div"))
+			// jquery对象只能使用jquery方法，dom对象则使用原生js属性和方法
+		</script>
+	</body>
+</html>
