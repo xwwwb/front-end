@@ -10,6 +10,10 @@ let b: { name: string }
 b = { name: "xwb" }
 // b = {name:'xwb',age:17}; //报错 要求对象和指定的形式一样
 
+// 声明时赋值之后 再修改要和第一次赋值的相同
+let r = { name: "xwwwb", sex: true }
+r = { name: "xwb", sex: false }
+
 let c: { name: string; age?: number }
 // 在属性名后加问好 表示属性是可选的
 c = { name: "xwb" }
@@ -68,10 +72,13 @@ k = {
 // &表示同时
 let l: { name: string } & { age: number }
 l = { name: "孙悟空", age: 18 }
-
+let p: { name: string } | { age: string }
+p = { name: "xwb" }
+p = { age: "20" }
+p = { name: "xwb", age: "20" }
 // 类型的别名
 let m: 1 | 2 | 3 | 4 | 5
 let n: 1 | 2 | 3 | 4 | 5
 // 这里m n 类型相同 分别定义 太长 可以使用类型的别名
 type myType = 1 | 2 | 3 | 4 | 5
-let o : myType
+let o: myType
