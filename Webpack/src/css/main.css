@@ -2,3 +2,13 @@
 	font-size: larger;
 	color: lightblue;
 }
+#img1 {
+	background-image: url("../image/86387d77b4112c536c27dacbb1097318.jpeg");
+	width: 200px;
+	height: 200px;
+}
+#img2 {
+	background-image: url("../image/avatar.jpeg");
+	width: 200px;
+	height: 200px;
+}

@@ -17,6 +17,15 @@ module.exports = {
         test: /\.less$/,
         use: ["style-loader", "css-loader", "less-loader"],
       },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 40 * 1024
+          }
+        }
+      },
     ]
   },
   plugins: [
