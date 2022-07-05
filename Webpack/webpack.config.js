@@ -1,4 +1,5 @@
 const ESLintPlugin = require('eslint-webpack-plugin');
+const HTMLWebPackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -48,8 +49,17 @@ module.exports = {
   plugins: [
     new ESLintPlugin({
       context: 'src',
+    }),
+    new HTMLWebPackPlugin({
+      template: './public/index.html',
     })
   ],
   // mode: 'development',
   mode: 'production',
+  // 不会输出文件
+  devServer: {
+    port: '3000',
+    host: 'localhost',
+    open: true
+  }
 }
