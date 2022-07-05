@@ -38,6 +38,10 @@ module.exports = {
         generator: {
           filename: 'font/[hash:5][ext]',
         }
+      }, {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
       }
     ]
   },
@@ -46,6 +50,6 @@ module.exports = {
       context: 'src',
     })
   ],
-  mode: 'development',
-  // mode: 'production',
+  // mode: 'development',
+  mode: 'production',
 }
