@@ -1,3 +1,4 @@
+const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -41,7 +42,9 @@ module.exports = {
     ]
   },
   plugins: [
-
+    new ESLintPlugin({
+      context: 'src',
+    })
   ],
   mode: 'development',
   // mode: 'production',
