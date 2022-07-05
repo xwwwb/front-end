@@ -2,8 +2,10 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: __dirname + '/dist',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    clean: true
   },
+
   module: {
     rules: [
       {
@@ -24,8 +26,18 @@ module.exports = {
           dataUrlCondition: {
             maxSize: 40 * 1024
           }
+        },
+        generator: {
+          filename: 'img/[hash:5][ext]',
         }
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: "asset/resource",
+        generator: {
+          filename: 'font/[hash:5][ext]',
+        }
+      }
     ]
   },
   plugins: [
