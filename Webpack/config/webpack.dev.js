@@ -3,7 +3,7 @@ const HTMLWebPackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/dist', // 开发模式无输出 这里随意
     filename: 'bundle.js',
     clean: true
   },
@@ -54,8 +54,8 @@ module.exports = {
       template: './public/index.html',
     })
   ],
-  // mode: 'development',
-  mode: 'production',
+  mode: 'development',
+  // mode: 'production',
   // 不会输出文件
   devServer: {
     port: '3000',
