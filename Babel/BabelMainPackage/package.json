@@ -1,0 +1,21 @@
+{
+  "name": "babel_main_package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test1": "npx babel .\\index.js --out-dir dist && node .\\dist\\index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2"
+  },
+  "browserslist": "> 0.01%",
+  "dependencies": {
+    "core-js": "^3.28.0"
+  }
+}
